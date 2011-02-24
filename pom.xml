@@ -58,6 +58,7 @@
 					<reportSet>
 						<reports>
 							<report>dependencies</report>
+                            <report>index</report>
 							<!-- <report>project-team</report> <report>mailing-list</report> <report>cim</report>
 								<report>issue-tracking</report> -->
 							<report>license</report>
