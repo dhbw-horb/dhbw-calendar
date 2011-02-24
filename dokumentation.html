@@ -58,25 +58,31 @@
                        <h5>User Guide</h5>
                   <ul>
                   <li class="none">
-                          <a href="user/allgemein.html" title="Allgemein">Allgemein</a>
+                          <a href="user-allgemein.html" title="Allgemein">Allgemein</a>
             </li>
                   <li class="none">
-                          <a href="user/google.html" title="Google Kalender">Google Kalender</a>
+                          <a href="user-google.html" title="Google Kalender">Google Kalender</a>
             </li>
                   <li class="none">
-                          <a href="user/lightning.html" title="Mozilla Lightning">Mozilla Lightning</a>
+                          <a href="user-lightning.html" title="Mozilla Lightning">Mozilla Lightning</a>
             </li>
                   <li class="none">
-                          <a href="user/outlook.html" title="Outlook">Outlook</a>
+                          <a href="user-outlook.html" title="Outlook">Outlook</a>
             </li>
           </ul>
                        <h5>Entwickler</h5>
                   <ul>
                   <li class="none">
-                          <a href="devel/install.html" title="Install">Install</a>
+                          <a href="devel-install.html" title="Install">Install</a>
             </li>
                   <li class="none">
-                          <a href="devel/hacking.html" title="Hacking">Hacking</a>
+                          <a href="project-reports.html" title="Reports/API">Reports/API</a>
+            </li>
+                  <li class="none">
+                          <a href="devel-hacking.html" title="Hacking">Hacking</a>
+            </li>
+                  <li class="none">
+                          <a href="dependencies.html" title="Dependencies">Dependencies</a>
             </li>
                   <li class="none">
                           <a href="source-repository.html" title="Source Repository">Source Repository</a>
@@ -94,14 +100,12 @@
         
 	
 		<div class="section"><h2>Einleitung<a name="Einleitung"></a></h2>
-			<p>
-				Die Nutzung von elektronischen Kalendern zur Planung und
+			<p>Die Nutzung von elektronischen Kalendern zur Planung und
 				Verwaltung
 				spielt eine
 				enorme Rolle f&#xfc;r viele Privatleute und in
 				vielen Unternehmen.</p>
-			<p>
-				Firmeninterne und -&#xfc;bergreifende Gesch&#xe4;fte nutzen in vielen die
+			<p>Firmeninterne und -&#xfc;bergreifende Gesch&#xe4;fte nutzen die vielen
 				M&#xf6;glichkeiten
 				von Kalender (Groupware) Applikationen. Mithilfe des
 				iCalendar
@@ -109,17 +113,15 @@
 				existiert ein interoperabler Standard zum
 				Austausch von
 				Kalenderinformationen.</p>
-			<p>
-				Die neue Campus-Software ,,Dualis'' der Dualen Hochschule
+			<p>Die neue Campus-Software ,,Dualis'' der Dualen Hochschule
 				Baden-W&#xfc;rttemberg
 				stellt den Studenten einen elektronischen
 				Vorlesungsplan zur Verf&#xfc;gung.
 				Eine
 				Schnittstelle zur Anbindung an
-				g&#xe4;ngige Kalenderl&#xf6;sung wird jedoch nicht
+				g&#xe4;ngige Kalenderl&#xf6;sungen wird jedoch nicht
 				bereitgestellt.</p>
-			<p>
-				Das Ziel dieses Projektes ist es, einen Adapter bereitzustellen
+			<p>Das Ziel dieses Projektes ist es, einen Adapter bereitzustellen,
 				mithilfe
 				dessen der ,,Stundenplan'' aus dem ,,Dualis'' System der
 				Dualen Hochschule
@@ -127,101 +129,99 @@
 				Anwendung importiert
 				werden kann.</p>
 			<div class="section"><h3>Dualis<a name="Dualis"></a></h3>
-				<p>Dualis ist das interne Verwaltungssystem der DHBW. Es basiert auf
+				<p>
+					Dualis ist das interne Verwaltungssystem der DHBW. Es basiert auf
 					der Software
 					,,CampusNet'' der Firma Datenlotsen Informationssysteme
-					GmbH, Hamburg.
-			</p>
-				<p>
-					Unter dem Namen ,,BAsys Neu'' wurde Dualis als Abl&#xf6;sung des alten
-					,,BAsys''-Verwaltungssystem entwickelt. Die Endung ,,-is'' steht
+					GmbH, Hamburg.Unter dem Namen ,,BAsys Neu'' wurde Dualis als
+					Abl&#xf6;sung des alten
+					,,BAsys''-Verwaltungssystem entwickelt. Die
+					Endung ,,-is'' steht
 					f&#xfc;r
-					Informationssystem.%cite
-					%http://www.dhbw-stuttgart.de/themen/aktuelles/meldung/2008/11/basys-wird-dualis.html
+					Informationssystem (
+					<a class="externalLink" href="http://www.dhbw-stuttgart.de/themen/aktuelles/meldung/2008/11/basys-wird-dualis.html">Pressemeldung</a>
+					).
 				</p>
-				<p>
-					Studierende k&#xf6;nnen &#xfc;ber den Dualis Web-Client ihre Noten, eine
+				<p>Studierende k&#xf6;nnen &#xfc;ber den Dualis Web-Client ihre Noten, eine
 					Leistungs&#xfc;bersicht &#xfc;ber das gesamte Studium und ihren aktuellen
-					Stundenplan einsehen.
-					</p>
+					Stundenplan einsehen.</p>
 			</div>
 			<div class="section"><h3>Das iCalendar Format<a name="Das_iCalendar_Format"></a></h3>
-				<p>
-					iCalendar ist ein Internet Standard (RFC 5545) um
+				<p>iCalendar ist ein Internet Standard (RFC 5545) um
 					Kalenderinformationen
-					auszutauschen.</p>
-				<p>
-					Dabei gibt es Verschiedene Klassen wir Event, To-Do oder
+					auszutauschen. Dazu gibt es verschiedene
+					Klassen wie Event, To-Do oder
 					Free/Busy-Information.
-					Im Rahmen dieses Projekts werden nur Events
+					Im Rahmen dieses
+					Projekts werden nur Events
 					genutzt.</p>
 				<p>
 					iCalendar Daten besitzen den MIME Content-Type
-					\texttt{text/calender}. Die
+					<tt>{text/calender</tt>
+					. Die
 					Daten
 					sind in einem einfachen, ASCII
-					Key-Value Format aufgebaut.</p>
-				<p>
-					Grunds&#xe4;tzlich bestehen iCalendar Daten aus folgendem Block
-</p>
+					Key-Value Format aufgebaut.
+				</p>
+				<p>Grunds&#xe4;tzlich bestehen iCalendar Daten aus folgendem Block</p>
 				<div class="source"><pre>
-					BEGIN:VCALENDAR
-					PRODID:-//xyz Corp//NONSGML PDA Calendar
-					Version 1.0//EN
-					VERSION:2.0
-					....
-					Event, To-Do, Journal,
-					Free/Busy, Time
-					Zone, Alarm Component
-					...
-					END:VCALENDAR
+BEGIN:VCALENDAR
+PRODID:-//xyz Corp//NONSGML PDA Calendar
+Version 1.0//EN
+VERSION:2.0
+....
+Event, To-Do, Journal,
+Free/Busy, Time
+Zone, Alarm Component
+...
+END:VCALENDAR
 				</pre></div>
 				<p>Eine Event-Component ist wie folgt aufgebaut, wobei noch weitere
 					optionale Felder m&#xf6;glich sind:</p>
 				<div class="source"><pre>
-					BEGIN:VEVENT
-					DTSTAMP:19960704T120000Z
-					UID:uid1@example.com
-					ORGANIZER:mailto:jsmith@example.com
-					DTSTART:19960918T143000Z
-					DTEND:19960920T220000Z
-					STATUS:CONFIRMED
-					CATEGORIES:CONFERENCE
-					SUMMARY:Networld+Interop Conference
-					DESCRIPTION:Networld+Interop
-					Conference
-					and Exhibit\nAtlanta World Congress Center\n
-					Atlanta\,
-					Georgia
-					END:VEVENT</pre></div>
-				<p>
-					Wie zu sehen ist bestehen besondere Vorgaben f&#xfc;r Zeit- und
+BEGIN:VEVENT
+DTSTAMP:19960704T120000Z
+UID:uid1@example.com
+ORGANIZER:mailto:jsmith@example.com
+DTSTART:19960918T143000Z
+DTEND:19960920T220000Z
+STATUS:CONFIRMED
+CATEGORIES:CONFERENCE
+SUMMARY:Networld+Interop Conference
+DESCRIPTION:Networld+Interop
+Conference
+and Exhibit\nAtlanta World Congress Center\n
+Atlanta\,
+Georgia
+END:VEVENT
+				</pre></div>
+				<p>Wie zu sehen ist bestehen besondere Vorgaben f&#xfc;r Zeit- und
 					Textformatierung.</p>
 				<p>
 					Zeiten k&#xf6;nnen in der UTC-Zone im Format
-					\texttt{YYYYMMDDTHHmmssZ}
+					<tt>YYYYMMDDTHHmmssZ</tt>
 					dargestellt
-					werden. \texttt{T} ist ein
+					werden.
+					<tt>T</tt>
+					ist ein
 					Trenner zwischen Datum und
-					Zeit, \texttt{Z}
+					Zeit,
+					<tt>Z</tt>
 					zeigt an,
 					dass es sich um
 					einen UTC-Timestamp
-					handelt\footnote{RFC5545 Sec.
-					3.3.5}.</p>
-				<p>
-					Text wird
+					handelt (RFC5545 Sec.
+					3.3.5).
+				</p>
+				<p>Text wird
 					grunds&#xe4;tzlich als ASCII-Test dargestellt. Es bestehen
 					jedoch
 					Fluchtzeichen f&#xfc;r nicht-ASCII Zeichen und Satz- und
-					Kontrollzeichen
-					\footnote{RFC5545 Sec. 3.3.11}.
-				</p>
+					Kontrollzeichen ()RFC5545 Sec. 3.3.11).</p>
 			</div>
 		</div>
 		<div class="section"><h2>Umsetzung<a name="Umsetzung"></a></h2>
-			<p>
-				Dem Anschein nach ist der Dualis Web-Client mithilfe der Software
+			<p>Dem Anschein nach ist der Dualis Web-Client mithilfe der Software
 				Oracle
 				Application Express (APEX) entwickelt.
 				Das erzeugte Markup ist
@@ -229,85 +229,57 @@
 				es
 				auf die Anzeige
 				gegen&#xfc;ber einem menschlichen Benutzer ausgerichtet ist.</p>
-
-			<p>Eine Web-API von Dualis gibt meines unseres Wissens nach nicht.
-				Demzufolge m&#xfc;ssen die
-				Webseiten relativ umst&#xe4;ndlich analysiert
+			<p>Eine Web-API von Dualis gibt anscheinend nicht.
+				Demzufolge m&#xfc;ssen
+				die Webseiten relativ umst&#xe4;ndlich analysiert
 				werden, um an die
-				ben&#xf6;tigten
-				Informationen zu gelangen. Diesen Vorgang
-				nennt man Web-Scraping
-				(engl. ,,kratzen'').</p>
+				ben&#xf6;tigten Informationen zu gelangen. Diesen Vorgang
+				nennt man
+				Web-Scraping (engl. ,,kratzen'').</p>
 
-			<p>Dadurch wird die Schnittstelle anf&#xe4;lliger f&#xfc;r
-				kleinere &#xc4;nderungen
-				an dem
-				Dualis
-				Web-Client. Schon das &#xc4;ndern der
-				Beschriftung eines
-				bestimmten Links kann die
-				Funktion beeintr&#xe4;chtigen.</p>
+			<p>Dadurch wird die Schnittstelle anf&#xe4;lliger f&#xfc;r kleinere &#xc4;nderungen
+				an dem Dualis Web-Client. Schon das &#xc4;ndern der Beschriftung eines
+				bestimmten Links kann die Funktion beeintr&#xe4;chtigen.</p>
 
 			<p>F&#xfc;r einen zuverl&#xe4;ssigen Betrieb ist es daher unbedingt n&#xf6;tig, dass
-				von Seiten
-				des Dualis System eine stabile Schnittstelle mit einem zum
-				Informationsaustausch
-				geeigneten Format (zum Beispiel eine
-				XML-Schnitstelle nach dem HTTP/REST
-				Prinzip) angeboten wird. Oder
-				einfach direkt eine iCalendar
-				Schnittstelle.</p>
+				von Seiten des Dualis System eine stabile Schnittstelle mit einem
+				zum Informationsaustausch geeigneten Format (zum Beispiel eine
+				XML-Schnitstelle) angeboten wird. Oder einfach direkt iCalendar
+				Format.</p>
 			<div class="section"><h3>Web Scraping<a name="Web_Scraping"></a></h3>
 				<p>Zum ,,kratzen'' der Informationen aus dem HTML-Dickicht der
-					Dualis
-					Website wird
-					die Java-Bibliothek htmlunit Verwendet. Deren
-					eigentlicher Zweck ist
-					das
-					automatisierte Headless Testen von
-					Websites. Dazu ist sie in der Lage einen
-					Web-Browser inklusive
+					Dualis Website wird die Java-Bibliothek htmlunit Verwendet. Deren
+					eigentlicher Zweck ist das automatisierte Headless Testen von
+					Websites. Dazu ist sie in der Lage einen Web-Browser inklusive
 					JavaScript und CSS weitgehend zu emulieren.</p>
 
-				<p>Dies sind optimale
-					Ausgangsbedingungen um eine schwer zug&#xe4;ngliche
-					Seite wie Dualis
-					einfach auszuwerten.</p>
+				<p>Dies sind optimale Ausgangsbedingungen um eine schwer zug&#xe4;ngliche
+					Seite wie Dualis einfach auszuwerten.</p>
 
 				<p>Ein vereinfachtes Code-Beispiel verdeutlicht die
 					Arbeit mit
 					htmlunit:</p>
 				<div class="source"><pre>
-					...
-					WebClient webClient = new
-					WebClient();
+WebClient webClient = new WebClient();
 
-					loginPage =
-					webClient.getPage(DUALIS_URL);
+loginPage = webClient.getPage(DUALIS_URL);
 
-					loginForm =
-					loginPage.getFormByName(&quot;cn_loginForm&quot;);
-					usernameField =
-					loginForm.getInputByName(&quot;usrname&quot;);
-					usernameField.type(username);
+loginForm = loginPage.getFormByName(&quot;cn_loginForm&quot;);
+usernameField = loginForm.getInputByName(&quot;usrname&quot;);
+usernameField.type(username);
 
-					passwordField = loginForm.getInputByName(&quot;pass&quot;);
-					passwordField.type(password);
+passwordField = loginForm.getInputByName(&quot;pass&quot;);
+passwordField.type(password);
 
-					submitButton =
-					loginForm.getInputByValue(&quot;Anmelden&quot;);
-					page = submitButton.click();
+submitButton = loginForm.getInputByValue(&quot;Anmelden&quot;);
+page = submitButton.click();
 
-					HtmlAnchor anchorByText;
-					anchorByText =
-					page.getAnchorByText(&quot;Stundenplan&quot;);
-					page = anchorByText.click();
+HtmlAnchor anchorByText = page.getAnchorByText(&quot;Stundenplan&quot;);
+page = anchorByText.click();
 				</pre></div>
 			</div>
 
 			<div class="section"><h3>iCalendar Datenschnittstelle<a name="iCalendar_Datenschnittstelle"></a></h3>
-				<p>TBD</p>
-
 				<p>Die g&#xe4;ngige Methode zum Austausch von iCalendar Daten sind
 					entweder
 					lokale Files
@@ -316,36 +288,39 @@
 				<p>Mit diesem Projekt wird der Zugriff &#xfc;ber HTTP erm&#xf6;glicht. Dabei
 					entf&#xe4;llt
 					zus&#xe4;tzlich der Bedarf eine Benutzerkonfiguration zu
-					pflegen. Der
-					Benutzer kann
-					&#xfc;ber HTTP Basic
-					Authentication\footnote{RFC 1945 Sec.
-					11.1}.</p>
+					pflegen, da der Benutzer &#xfc;ber HTTP Basic
+					Authentication (nach RFC
+					1945 Sec. 11.1) vom Client
+					abgefragt wird.</p>
 
 				<p>Hierzu wurde ein Java-Servlet erstellt welches die
 					Authentifizerung und
 					Steuerung der Dualis Abfrage &#xfc;bernimmt.</p>
 
-				<p>Bei der
+				<p>
+					Bei der
 					Ansteurerung der Schnittstelle &#xfc;ber einfache HTTP-Software
-					ist
-					zu beachten, dass das \texttt{@} im benutzername mit
-					\texttt{\%40} zu
-					escapen ist.</p>
+					ist zu beachten, dass das
+					<tt>@</tt>
+					im benutzername mit
+					<tt>%40</tt>
+					zu escapen ist.
+				</p>
 			</div>
 			<div class="section"><h3>Web Datenschnittstelle<a name="Web_Datenschnittstelle"></a></h3>
 				<p>
 					Zus&#xe4;tzlich zur ICS-Schnittstelle existiert eine Schnittstelle f&#xfc;r
 					den Webbrowser. Sie ist mit dem Framework
-					vaadin\footnote{\url{http://vaadin.com}}
+					vaadin (
+					<a class="externalLink" href="http://vaadin.com">vaadin.com</a>
+					)
 					umgesetzt und bietet die
 					Funktionalit&#xe4;t den Login durch eine
 					Anmeldung zu testen
 					sowie den
-					,,Stundenplan'' in einer Tabelle zu Betrachten.</p>
-			</div>
-			<div class="section"><h3>Kompatibilit&#xe4;t<a name="Kompatibilitt"></a></h3>
-				<p>to be copied from TeX</p>
+					,,Stundenplan'' in einer Tabelle zu
+					Betrachten.
+				</p>
 			</div>
 
 			<div class="section"><h3>Sicherheit des Benutzers<a name="Sicherheit_des_Benutzers"></a></h3>
@@ -356,7 +331,7 @@
 
 				<p>Hinsichtlich der Authentifizierungsinformationen die der
 					Benutzer
-					DHBW~Calendar
+					DHBW Calendar
 					&#xfc;bergibt sind mehrere Angriffspunkte
 					auszumachen.</p>
 				<table align="center" border="1" class="bodyTable">
@@ -377,12 +352,12 @@
 						<td align="left">Die Netzwerkverbindung zum DHBW Calendar</td>
 						<td align="left">Die
 							Netzwerkverbindung zum
-							DHBW~Calender
+							DHBW Calender
 							sollte entweder als
 							direkte
 							Lokale Kommunikation ablaufen
 							(der
-							DHBW~Calender arbeitet
+							DHBW Calender arbeitet
 							lokal) oder
 							eine sichere Verbindung (HTTPS)
 							verwenden.</td>
@@ -391,7 +366,7 @@
 						<td align="left">Die Verarbeitung im DHBW Calendar</td>
 						<td align="left">Die
 							Verarbeitung
-							im DHBW~Calender speichert
+							im DHBW Calender speichert
 							die verarbeiteten
 							Daten
 							vor&#xfc;bergehend im
@@ -428,7 +403,7 @@
 				</table>
 				<p>Durch die quelloffenheit
 					des
-					DHBW~Calendar ist die
+					DHBW Calendar ist die
 					Verarbeitung der
 					Daten
 					transparent. Daher
@@ -442,30 +417,30 @@
 		</div>
 		<div class="section"><h2>Fazit<a name="Fazit"></a></h2>
 			<p>
-				Die Entwicklung des DHBW~Calendar erm&#xf6;glicht den Studenten in
+				Die Entwicklung des DHBW Calendar erm&#xf6;glicht den Studenten in
 				bezug auf
 				die
 				Organisierung ihres Studentalltags eine neue Dimension
 				von Integration und
 				Komfort.</p>
-			<p>Der Unzuverl&#xe4;ssigkeit des Backend ,,Dualis'' wurde durch die
-				Verwendung einer
-				High-Level Schnittstelle begegnet. Anstatt regul&#xe4;rer
-				Ausdr&#xfc;cke (DHBW
-				Connector)
-				werden die Eingabeelemente angesprochen
-				welche der Benutzer auch sehen
-				w&#xfc;rde.</p>
 			<p>
-				Die Ver&#xf6;ffentlichung als Open-Source Projekt stellt das Vertrauen
-				der
-				Studenten
-				sowohl in Hinsicht auf ihre eigene Sicherheit, als auch
-				der
-				Zuverl&#xe4;ssigkeit
-				hinsichtlich m&#xf6;glicherweise zuk&#xfc;nftig n&#xf6;tiger
-				Anspassungen.
-		</p>
+				Die Unzul&#xe4;nglichkeit des ,,Dualis'' Backend wurde durch die
+				Verwendung einer High-Level Schnittstelle begegnet. Anstatt
+				regul&#xe4;rer
+				Ausdr&#xfc;cke (
+				<a class="externalLink" href="http://dhbwconnector.sourceforge.net/">DHBW Connector</a>
+				)
+				werden die Eingabeelemente angesprochen
+				welche der Benutzer auch
+				sehen w&#xfc;rde.
+			</p>
+			<p>
+				Die Ver&#xf6;ffentlichung als Open-Source Projekt unter
+				<a href="license.html">AGPL</a>
+				stellt das Vertrauen der Studenten sowohl in Hinsicht auf ihre
+				eigene Sicherheit, als auch der Zuverl&#xe4;ssigkeit hinsichtlich
+				m&#xf6;glicherweise zuk&#xfc;nftig n&#xf6;tiger Anspassungen.
+			</p>
 		</div>
 	
 
