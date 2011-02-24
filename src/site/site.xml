@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/DECORATION/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+	<body>
+		<menu name="Allgemein">
+			<item name="Start" href="index.html" />
+			<item name="Dokumentation" href="dokumentation.html" />
+			<item name="Lizenzierung" href="license.html" />
+		</menu>
+		<menu name="User Guide">
+			<item name="Allgemein" href="user-allgemein.html" />
+			<item name="Google Kalender" href="user-google.html" />
+			<item name="Mozilla Lightning" href="user-lightning.html" />
+			<item name="Outlook" href="user-outlook.html" />
+		</menu>
+		<menu name="Entwickler">
+			<item name="Install" href="devel-install.html" />
+			<item name="Reports/API" href="project-reports.html" />
+			<item name="Hacking" href="devel-hacking.html" />
+			<item name="Dependencies" href="dependencies.html" />
+			<item name="Source Repository" href="source-repository.html" />
+		</menu>
+	</body>
+</project>

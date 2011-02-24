@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Anbindung Allgemein</title>
+		<author>Yves Fischer</author>
+		<date>24.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="Anbindung Allgemein">
+			<p>Die Software stellt Ihnen eine iCalendar Schnittstelle über HTTP
+				bereit. Sie ist also mit jeder kompatiblen Kalendersoftware nutzbar.
+			</p>
+			<p>
+				Die Internet RFC zu iCalendar findet sich unter
+				<a href="http://tools.ietf.org/html/rfc5545">rfc5545</a>
+				.
+			</p>
+			<p>Zusätzlich stellt der DHBW Calendar eine Webschnittstelle bereit
+				mit dem die Daten in Tabellenform betrachtet werden können. Diese
+				ist primär zu Test- und Prüfzwecke gedacht.</p>
+			<subsection name="Beispiel einer iCalendar Ausgabe">
+				<source><![CDATA[
+BEGIN:VCALENDAR
+PRODID:-//DHBW Horb i08005//DHBW Calender 0.1//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-TIMEZONE:UTC
+X-WR-CALDESC:DHBW Calendar
+X-WR-CALNAME:DHBW Calendar
+BEGIN:VEVENT
+DTSTART:20110208T081500Z
+DTEND:20110208T104500Z
+DTSTAMP:20110208T081500Z
+UID:vevent_20110208T081500Z@dhbw.de
+CREATED:20110224T211542Z
+STATUS:CONFIRMED
+SUMMARY:Open Source Systeme
+DESCRIPTION:Open Source Systeme
+LOCATION:HOR-121
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20110208T123000Z
+DTEND:20110208T160000Z
+DTSTAMP:20110208T123000Z
+UID:vevent_20110208T123000Z@dhbw.de
+CREATED:20110224T211542Z
+STATUS:CONFIRMED
+SUMMARY:Computergrafik  HOR-TIT08
+DESCRIPTION:Computergrafik  HOR-TIT08
+LOCATION:HOR-121
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20110209T084500Z
+DTEND:20110209T120000Z
+DTSTAMP:20110209T084500Z
+UID:vevent_20110209T084500Z@dhbw.de
+CREATED:20110224T211542Z
+STATUS:CONFIRMED
+SUMMARY:Web Engineering II
+DESCRIPTION:Web Engineering II
+LOCATION:HOR-121
+TRANSP:OPAQUE
+END:VEVENT
+BEGIN:VEVENT
+DTSTART:20110209T123000Z
+DTEND:20110209T150000Z
+DTSTAMP:20110209T123000Z
+UID:vevent_20110209T123000Z@dhbw.de
+CREATED:20110224T211542Z
+STATUS:CONFIRMED
+SUMMARY:Anwendung von Fallbeispielen
+DESCRIPTION:Anwendung von Fallbeispielen
+LOCATION:HOR-121
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
+]]></source>
+			</subsection>
+		</section>
+	</body>
+</document>
+

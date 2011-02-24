@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Installation Guide</title>
+		<author>Yves Fischer</author>
+		<date>24.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="Installation Guide">
+			<subsection name="Mit Embedded Servlet Container">
+				<source>mvn jetty:run</source>
+				<p>Standardmäßig lauscht jetty nun auf Port 8080</p>
+			</subsection>
+			<subsection name="Mit .war File">
+				<p>Mit .war-File für Servlet Container</p>
+				<source>mvn package
+cp
+target/dhbwcalendar.war $WEB</source>
+			</subsection>
+		</section>
+	</body>
+</document>
+

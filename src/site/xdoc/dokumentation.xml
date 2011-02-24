@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Projektdokumentation</title>
+		<author>Yves Fischer</author>
+		<date>24.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="Einleitung">
+			<p>Die Nutzung von elektronischen Kalendern zur Planung und
+				Verwaltung
+				spielt eine
+				enorme Rolle für viele Privatleute und in
+				vielen Unternehmen.</p>
+			<p>Firmeninterne und -übergreifende Geschäfte nutzen die vielen
+				Möglichkeiten
+				von Kalender (Groupware) Applikationen. Mithilfe des
+				iCalendar
+				Standards
+				existiert ein interoperabler Standard zum
+				Austausch von
+				Kalenderinformationen.</p>
+			<p>Die neue Campus-Software ,,Dualis'' der Dualen Hochschule
+				Baden-Württemberg
+				stellt den Studenten einen elektronischen
+				Vorlesungsplan zur Verfügung.
+				Eine
+				Schnittstelle zur Anbindung an
+				gängige Kalenderlösungen wird jedoch nicht
+				bereitgestellt.</p>
+			<p>Das Ziel dieses Projektes ist es, einen Adapter bereitzustellen,
+				mithilfe
+				dessen der ,,Stundenplan'' aus dem ,,Dualis'' System der
+				Dualen Hochschule
+				Baden-Württemberg in eine iCalendar-kompatible
+				Anwendung importiert
+				werden kann.</p>
+			<subsection name="Dualis">
+				<p>
+					Dualis ist das interne Verwaltungssystem der DHBW. Es basiert auf
+					der Software
+					,,CampusNet'' der Firma Datenlotsen Informationssysteme
+					GmbH, Hamburg.Unter dem Namen ,,BAsys Neu'' wurde Dualis als
+					Ablösung des alten
+					,,BAsys''-Verwaltungssystem entwickelt. Die
+					Endung ,,-is'' steht
+					für
+					Informationssystem (
+					<a
+						href="http://www.dhbw-stuttgart.de/themen/aktuelles/meldung/2008/11/basys-wird-dualis.html">Pressemeldung</a>
+					).
+				</p>
+				<p>Studierende können über den Dualis Web-Client ihre Noten, eine
+					Leistungsübersicht über das gesamte Studium und ihren aktuellen
+					Stundenplan einsehen.</p>
+			</subsection>
+			<subsection name="Das iCalendar Format">
+				<p>iCalendar ist ein Internet Standard (RFC 5545) um
+					Kalenderinformationen
+					auszutauschen. Dazu gibt es verschiedene
+					Klassen wie Event, To-Do oder
+					Free/Busy-Information.
+					Im Rahmen dieses
+					Projekts werden nur Events
+					genutzt.</p>
+				<p>
+					iCalendar Daten besitzen den MIME Content-Type
+					<tt>{text/calender</tt>
+					. Die
+					Daten
+					sind in einem einfachen, ASCII
+					Key-Value Format aufgebaut.
+				</p>
+				<p>Grundsätzlich bestehen iCalendar Daten aus folgendem Block</p>
+				<source><![CDATA[
+BEGIN:VCALENDAR
+PRODID:-//xyz Corp//NONSGML PDA Calendar
+Version 1.0//EN
+VERSION:2.0
+....
+Event, To-Do, Journal,
+Free/Busy, Time
+Zone, Alarm Component
+...
+END:VCALENDAR
+				]]></source>
+				<p>Eine Event-Component ist wie folgt aufgebaut, wobei noch weitere
+					optionale Felder möglich sind:</p>
+				<source><![CDATA[
+BEGIN:VEVENT
+DTSTAMP:19960704T120000Z
+UID:uid1@example.com
+ORGANIZER:mailto:jsmith@example.com
+DTSTART:19960918T143000Z
+DTEND:19960920T220000Z
+STATUS:CONFIRMED
+CATEGORIES:CONFERENCE
+SUMMARY:Networld+Interop Conference
+DESCRIPTION:Networld+Interop
+Conference
+and Exhibit\nAtlanta World Congress Center\n
+Atlanta\,
+Georgia
+END:VEVENT
+				]]></source>
+				<p>Wie zu sehen ist bestehen besondere Vorgaben für Zeit- und
+					Textformatierung.</p>
+				<p>
+					Zeiten können in der UTC-Zone im Format
+					<tt>YYYYMMDDTHHmmssZ</tt>
+					dargestellt
+					werden.
+					<tt>T</tt>
+					ist ein
+					Trenner zwischen Datum und
+					Zeit,
+					<tt>Z</tt>
+					zeigt an,
+					dass es sich um
+					einen UTC-Timestamp
+					handelt (RFC5545 Sec.
+					3.3.5).
+				</p>
+				<p>Text wird
+					grundsätzlich als ASCII-Test dargestellt. Es bestehen
+					jedoch
+					Fluchtzeichen für nicht-ASCII Zeichen und Satz- und
+					Kontrollzeichen ()RFC5545 Sec. 3.3.11).</p>
+			</subsection>
+		</section>
+		<section name="Umsetzung">
+			<p>Dem Anschein nach ist der Dualis Web-Client mithilfe der Software
+				Oracle
+				Application Express (APEX) entwickelt.
+				Das erzeugte Markup ist
+				schlecht maschienenverarbeitbar, vermutlich weil
+				es
+				auf die Anzeige
+				gegenüber einem menschlichen Benutzer ausgerichtet ist.</p>
+			<p>Eine Web-API von Dualis gibt anscheinend nicht.
+				Demzufolge müssen
+				die Webseiten relativ umständlich analysiert
+				werden, um an die
+				benötigten Informationen zu gelangen. Diesen Vorgang
+				nennt man
+				Web-Scraping (engl. ,,kratzen'').</p>
+
+			<p>Dadurch wird die Schnittstelle anfälliger für kleinere Änderungen
+				an dem Dualis Web-Client. Schon das Ändern der Beschriftung eines
+				bestimmten Links kann die Funktion beeinträchtigen.</p>
+
+			<p>Für einen zuverlässigen Betrieb ist es daher unbedingt nötig, dass
+				von Seiten des Dualis System eine stabile Schnittstelle mit einem
+				zum Informationsaustausch geeigneten Format (zum Beispiel eine
+				XML-Schnitstelle) angeboten wird. Oder einfach direkt iCalendar
+				Format.</p>
+			<subsection name="Web Scraping">
+				<p>Zum ,,kratzen'' der Informationen aus dem HTML-Dickicht der
+					Dualis Website wird die Java-Bibliothek htmlunit Verwendet. Deren
+					eigentlicher Zweck ist das automatisierte Headless Testen von
+					Websites. Dazu ist sie in der Lage einen Web-Browser inklusive
+					JavaScript und CSS weitgehend zu emulieren.</p>
+
+				<p>Dies sind optimale Ausgangsbedingungen um eine schwer zugängliche
+					Seite wie Dualis einfach auszuwerten.</p>
+
+				<p>Ein vereinfachtes Code-Beispiel verdeutlicht die
+					Arbeit mit
+					htmlunit:</p>
+				<source><![CDATA[
+WebClient webClient = new WebClient();
+
+loginPage = webClient.getPage(DUALIS_URL);
+
+loginForm = loginPage.getFormByName("cn_loginForm");
+usernameField = loginForm.getInputByName("usrname");
+usernameField.type(username);
+
+passwordField = loginForm.getInputByName("pass");
+passwordField.type(password);
+
+submitButton = loginForm.getInputByValue("Anmelden");
+page = submitButton.click();
+
+HtmlAnchor anchorByText = page.getAnchorByText("Stundenplan");
+page = anchorByText.click();
+				]]></source>
+			</subsection>
+
+			<subsection name="iCalendar Datenschnittstelle">
+				<p>Die gängige Methode zum Austausch von iCalendar Daten sind
+					entweder
+					lokale Files
+					oder der entfernte Zugriff über HTTP.</p>
+
+				<p>Mit diesem Projekt wird der Zugriff über HTTP ermöglicht. Dabei
+					entfällt
+					zusätzlich der Bedarf eine Benutzerkonfiguration zu
+					pflegen, da der Benutzer über HTTP Basic
+					Authentication (nach RFC
+					1945 Sec. 11.1) vom Client
+					abgefragt wird.</p>
+
+				<p>Hierzu wurde ein Java-Servlet erstellt welches die
+					Authentifizerung und
+					Steuerung der Dualis Abfrage übernimmt.</p>
+
+				<p>
+					Bei der
+					Ansteurerung der Schnittstelle über einfache HTTP-Software
+					ist zu beachten, dass das
+					<tt>@</tt>
+					im benutzername mit
+					<tt>%40</tt>
+					zu escapen ist.
+				</p>
+			</subsection>
+			<subsection name="Web Datenschnittstelle">
+				<p>
+					Zusätzlich zur ICS-Schnittstelle existiert eine Schnittstelle für
+					den Webbrowser. Sie ist mit dem Framework
+					vaadin (
+					<a href="http://vaadin.com">vaadin.com</a>
+					)
+					umgesetzt und bietet die
+					Funktionalität den Login durch eine
+					Anmeldung zu testen
+					sowie den
+					,,Stundenplan'' in einer Tabelle zu
+					Betrachten.
+				</p>
+			</subsection>
+
+			<subsection name="Sicherheit des Benutzers">
+				<p>Wie alle Systeme die Authentifizierungs und Benutzerdaten
+					verarbeiten ist dieses
+					hinsichtlich der Vertrauenswürdigkeit zu
+					untersuchen.</p>
+
+				<p>Hinsichtlich der Authentifizierungsinformationen die der
+					Benutzer
+					DHBW Calendar
+					übergibt sind mehrere Angriffspunkte
+					auszumachen.</p>
+				<table>
+					<tr>
+						<th>Problempunkt</th>
+						<th>Analyse</th>
+					</tr>
+					<tr>
+						<td>Auf dem PC des Benutzers</td>
+						<td>Für die Sicherheit
+							auf seinem
+							Zugriffsgerät ist jeder
+							Benutzer
+							selbst
+							verantwortlich.</td>
+					</tr>
+					<tr>
+						<td>Die Netzwerkverbindung zum DHBW Calendar</td>
+						<td>Die
+							Netzwerkverbindung zum
+							DHBW Calender
+							sollte entweder als
+							direkte
+							Lokale Kommunikation ablaufen
+							(der
+							DHBW Calender arbeitet
+							lokal) oder
+							eine sichere Verbindung (HTTPS)
+							verwenden.</td>
+					</tr>
+					<tr>
+						<td>Die Verarbeitung im DHBW Calendar</td>
+						<td>Die
+							Verarbeitung
+							im DHBW Calender speichert
+							die verarbeiteten
+							Daten
+							vorübergehend im
+							Arbeitsspeicher des
+							darunterliegenden System.
+						</td>
+					</tr>
+					<tr>
+						<td>Die Netzwerkverbindung zu Dualis</td>
+						<td>ist verschlüsselt (HTTPS)
+							%%TODO
+							check was bei
+							unügliten cets
+							passiert</td>
+					</tr>
+					<tr>
+						<td>Die Verarbeitung in Dualis</td>
+						<td> Über die
+							Verarbeitung
+							innerhalb von Dualis
+							existieren
+							keine
+							Informationen.</td>
+					</tr>
+					<tr>
+						<td>ggf. weitere Verbindungen von Dualis (AD o.ä.)</td>
+						<td>Über
+							mögliche Kommunikationen
+							von Dualis mit Drittsystem
+							bestehen
+							keine
+							Informationen.</td>
+					</tr>
+				</table>
+				<p>Durch die quelloffenheit
+					des
+					DHBW Calendar ist die
+					Verarbeitung der
+					Daten
+					transparent. Daher
+					entstehen dem Anwender durch
+					die Verwendung
+					des
+					DHBW Calender
+					keine
+					weiteren Sicherheitsrisiken.</p>
+			</subsection>
+		</section>
+		<section name="Fazit">
+			<p>
+				Die Entwicklung des DHBW Calendar ermöglicht den Studenten in
+				bezug auf
+				die
+				Organisierung ihres Studentalltags eine neue Dimension
+				von Integration und
+				Komfort.</p>
+			<p>
+				Die Unzulänglichkeit des ,,Dualis'' Backend wurde durch die
+				Verwendung einer High-Level Schnittstelle begegnet. Anstatt
+				regulärer
+				Ausdrücke (
+				<a href="http://dhbwconnector.sourceforge.net/">DHBW Connector</a>
+				)
+				werden die Eingabeelemente angesprochen
+				welche der Benutzer auch
+				sehen würde.
+			</p>
+			<p>
+				Die Veröffentlichung als Open-Source Projekt unter
+				<a href="license.html">AGPL</a>
+				stellt das Vertrauen der Studenten sowohl in Hinsicht auf ihre
+				eigene Sicherheit, als auch der Zuverlässigkeit hinsichtlich
+				möglicherweise zukünftig nötiger Anspassungen.
+			</p>
+		</section>
+	</body>
+</document>
+

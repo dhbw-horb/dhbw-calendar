@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Hacking DHBW Calendar</title>
+		<author>Yves Fischer</author>
+		<date>24.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="Dualis">
+			<p>
+				Der Dualis Scraper mit htmlunit ist im package
+				<tt>...calendar.dualis</tt>
+				Untergebracht. Vaadin verwendet jedoch für den Login Test noch einen
+				eigenen Scraper.
+			</p>
+		</section>
+		<section name="Dokumentation">
+			<p>
+				Diese Dokumentation wird im Projektverzeichniss unter
+				<tt>src/main/site</tt>
+				verwaltet.
+			</p>
+			<p>
+				Dabei wird durchgehend das
+				<em>xdoc</em>
+				Format verwendet.
+			</p>
+			<p>
+				Generiert wird die Dokumentation durch den Befehl
+				<tt>mvn site:site</tt>
+				und der Befehl
+				<tt>mvn site:deploy</tt>
+				veröffentlicht - entsprechende Berechtigungen vorrausgesetzt - die
+				Seite auf github im
+				<em>gh-pages</em>
+				des Repositories.
+			</p>
+			<p>
+				Dazu muss in der lokalen Maven Konfiguration (
+				<tt>$HOME/.m2/settings.xml</tt>
+				) der Benutzer zum Zugriff auf das Repository auf
+				<em>git</em>
+				eingestellt sein.
+			</p>
+			<source>
+				&lt;settings
+				xmlns=&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;
+				xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+				xsi:schemaLocation=&quot;http://maven.apache.org/SETTINGS/1.0.0
+				http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;&gt;
+				&lt;servers&gt;
+				&lt;server&gt;
+				&lt;id&gt;github-project-site&lt;/id&gt;
+				&lt;username&gt;git&lt;/username&gt;
+				&lt;/server&gt;
+				&lt;/servers&gt;
+				&lt;/settings&gt; </source>
+			<p>
+				Siehe hierzu auch
+				<a href="http://khuxtable.github.com/wagon-gitsite/">die wagon-gitsite Seite</a>
+				und ein bestehendes Problem
+				<a href="https://github.com/khuxtable/wagon-gitsite/issues/7">issue</a>
+				.
+			</p>
+		</section>
+	</body>
+</document>
+

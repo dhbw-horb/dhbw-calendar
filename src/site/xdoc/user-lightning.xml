@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Anbindung Mozilla Lightning</title>
+		<author>Yves Fischer</author>
+		<date>24.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="Anbindung Mozilla Lightning">
+			<p>Nach der Installation der Lightning
+				Extension öffnen Sie die
+				Kalender
+				Ansicht.</p>
+			<p>In der linken Sidebar
+				werden die verfügbaren Kalender verwalten.
+				Mit
+				Rechtsklick erscheint
+				ein Menü in dem "Neuer Kalender" ausgewählt
+				werden kann.</p>
+			<p>Wählen sie
+				"Im Netzwerk" aus. Im folgenden wählen "iCalendar (ICS)"
+				und
+				geben
+				die Adresse ihrer Schnitstelle an, beispielsweise
+				http://localhost:8080/dhbwcalendar/ics.</p>
+			<p>Auf der nächsten Seite können
+				Sie noch Namen und Farben für den
+				Kalender vergeben. Mit dem
+				Abschluss des Assistenten wird der
+				Kalender synchronisiert. Dabei
+				fordert die Schnittstelle ein
+				Passwort
+				von Ihnen an. Geben Sie Ihr
+				Dualis-Login an.</p>
+			<center>
+				<img src="images/dhbwcalendar-lightning.jpg" alt="Mozilla Lightning" />
+			</center>
+		</section>
+	</body>
+</document>
+
