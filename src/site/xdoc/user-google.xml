@@ -16,7 +16,6 @@
 				"Weitere Kalender" den Button
 				"Hinzufügen".
 			</p>
-			<img src="images/dhbwcalendar-google1.jpg" alt="Hinzufügen" />
 			<p>
 				Im folgenden Menü wählen
 				Sie "Über URL hinzufügen" und
@@ -26,9 +25,11 @@
 				<a href="http://meinhost:8080/dhbwcalendar/ics">http://meinhost:8080/dhbwcalendar/ics</a>
 				.
 			</p>
-			<img src="images/dhbwcalendar-google2.jpg" alt="Ergebnis" />
-			<p>Bitte beachten Sie, dass die URL ihrer Schnittstelle für Google
+			<p>Beachten Sie, dass die URL ihrer Schnittstelle für Google
 				erreichbar sein muss.</p>
+			<img src="images/dhbwcalendar-google1.jpg" alt="Hinzufügen" />
+			<br />
+			<img src="images/dhbwcalendar-google2.jpg" alt="Ergebnis" />
 		</section>
 	</body>
 </document>

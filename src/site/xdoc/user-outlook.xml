@@ -4,12 +4,23 @@
 	<properties>
 		<title>Anbindung Microsoft Outlook</title>
 		<author>Yves Fischer</author>
-		<date>24.02.2011</date>
+		<date>27.02.2011</date>
 	</properties>
 
 	<body>
-		<section name="Anbindung Microsoft Outlook">
-			<p>Dokumentation fehlt noch.</p>
+		<section name="Anbindung Microsoft Windows Live/Hotmail">
+			<p>Melden Sie sich bei Windows Live an. Rufen Sie die
+				Kalendarfunktion auf.</p>
+			<p>Klicken sie in der Toolbar auf Subscribe/Abonnieren. Geben Sie als
+				Kalendar URL die URL ihrer DHBW Calendar Installation an. Der Server
+				muss für Microsoft erreichbar sein.</p>
+
+			<subsection name="Screenshot Web">
+				<img src="images/windows-live-web.jpg" alt="Windows Live im Web" />
+			</subsection>
+			<subsection name="Screenshot Desktop">
+				<img src="images/windows-live-desktop.jpg" alt="Windows Live im Web" />
+			</subsection>
 		</section>
 	</body>
 </document>

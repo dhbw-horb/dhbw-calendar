@@ -14,10 +14,11 @@
 				<p>Standardmäßig lauscht jetty nun auf Port 8080</p>
 			</subsection>
 			<subsection name="Mit .war File">
-				<p>Mit .war-File für Servlet Container</p>
-				<source>mvn package
-cp
-target/dhbwcalendar.war $WEB</source>
+				<p>
+					Ein Web-Archive (.war) kann mit dem Maven Kommando
+					<tt>mvn package</tt>
+					erzeugt werden.
+				</p>
 			</subsection>
 		</section>
 	</body>

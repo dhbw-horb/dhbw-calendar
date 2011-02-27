@@ -12,7 +12,7 @@
 			<item name="Allgemein" href="user-allgemein.html" />
 			<item name="Google Kalender" href="user-google.html" />
 			<item name="Mozilla Lightning" href="user-lightning.html" />
-			<item name="Outlook" href="user-outlook.html" />
+			<item name="Microsoft Outlook" href="user-outlook.html" />
 		</menu>
 		<menu name="Entwickler">
 			<item name="Install" href="devel-install.html" />

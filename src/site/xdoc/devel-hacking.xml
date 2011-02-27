@@ -12,7 +12,7 @@
 			<p>
 				Der Dualis Scraper mit htmlunit ist im package
 				<tt>...calendar.dualis</tt>
-				Untergebracht. Vaadin verwendet jedoch für den Login Test noch einen
+				Untergebracht. Das vaadin-ui verwendet jedoch für den Login Test noch einen
 				eigenen Scraper.
 			</p>
 		</section>
@@ -60,7 +60,7 @@
 			<p>
 				Siehe hierzu auch
 				<a href="http://khuxtable.github.com/wagon-gitsite/">die wagon-gitsite Seite</a>
-				und ein bestehendes Problem
+				und ein Problem
 				<a href="https://github.com/khuxtable/wagon-gitsite/issues/7">issue</a>
 				.
 			</p>
