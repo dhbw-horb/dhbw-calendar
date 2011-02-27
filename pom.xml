@@ -28,7 +28,7 @@
 	</developers>
 
 	<scm>
-		<url>https://github.com/yvesf/dhbwcalendar.git</url>
+		<url>https://github.com/dhbw-horb/dhbw-calendar</url>
 		<connection>scm:git:git://github.com/dhbw-horb/dhbw-calendar.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com:dhbw-horb/dhbw-calendar.git</developerConnection>
 	</scm>
