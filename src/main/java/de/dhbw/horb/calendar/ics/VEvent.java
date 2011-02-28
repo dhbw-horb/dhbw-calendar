@@ -1,11 +1,12 @@
 package de.dhbw.horb.calendar.ics;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class VEvent extends AbstractICSType {
-	public Date dtstamp = new Date();
-	public Date dtstart = new Date();
-	public Date dtend = new Date();
+	public Calendar dtstamp = Calendar.getInstance();
+	public Calendar dtstart = Calendar.getInstance();
+	public Calendar dtend = Calendar.getInstance();
 	public String status = "";
 	public String summary = "";
 	public String description = "";
@@ -19,12 +20,17 @@ public class VEvent extends AbstractICSType {
 	@Override
 	public String serialize() {
 		final StringBuffer sb = new StringBuffer();
+		dateTimeFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
 		sb.append("BEGIN:VEVENT\n");
-		sb.append("DTSTART:" + dateTimeFormat.format(dtstart) + "\n");
-		sb.append("DTEND:" + dateTimeFormat.format(dtend) + "\n");
-		sb.append("DTSTAMP:" + dateTimeFormat.format(dtstamp) + "\n");
-		sb.append("UID:vevent_" + dateTimeFormat.format(dtstamp) + "@dhbw.de\n");
-		sb.append("CREATED:" + dateTimeFormat.format(new Date()) + "\n");
+		sb.append("DTSTART:" + dateTimeFormat.format(dtstart.getTime()) + "\n");
+		sb.append("DTEND:" + dateTimeFormat.format(dtend.getTime()) + "\n");
+		sb.append("DTSTAMP:" + dateTimeFormat.format(dtstamp.getTime()) + "\n");
+		sb.append("UID:vevent_" + dateTimeFormat.format(dtstamp.getTime())
+				+ "@dhbw.de\n");
+		sb.append("CREATED:"
+				+ dateTimeFormat.format(Calendar.getInstance(TimeZone
+						.getTimeZone("UTC")).getTime()) + "\n");
 		sb.append("STATUS:" + escapeText(status) + "\n");
 		sb.append("SUMMARY:" + escapeText(summary) + "\n");
 		sb.append("DESCRIPTION:" + escapeText(description) + "\n");
@@ -37,18 +43,18 @@ public class VEvent extends AbstractICSType {
 	public static class Builder {
 		VEvent event = new VEvent();
 
-		public Builder dtstamp(Date dtstamp) {
-			event.dtstamp = dtstamp;
+		public Builder dtstamp(Calendar cstart) {
+			event.dtstamp = cstart;
 			return this;
 		}
 
-		public Builder dtstart(Date dtstart) {
-			event.dtstart = dtstart;
+		public Builder dtstart(Calendar cstart) {
+			event.dtstart = cstart;
 			return this;
 		}
 
-		public Builder dtend(Date dtend) {
-			event.dtend = dtend;
+		public Builder dtend(Calendar cend) {
+			event.dtend = cend;
 			return this;
 		}
 

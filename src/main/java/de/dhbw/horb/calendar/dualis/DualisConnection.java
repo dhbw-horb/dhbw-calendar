@@ -4,8 +4,9 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
@@ -32,7 +33,7 @@ public class DualisConnection {
 
 	/**
 	 * Baut eine Verbindung mit Dualis auf und führt einen Login durch
-	 * 
+	 *
 	 * @param username
 	 *            Dualis Benutzername
 	 * @param password
@@ -47,7 +48,6 @@ public class DualisConnection {
 		this.password = password;
 	}
 
-	@SuppressWarnings("deprecation")
 	public List<VEvent> getEvents() throws FailingHttpStatusCodeException,
 			IOException, DualisScrapingException, DualisAuthenticationException {
 		HtmlPage page, loginPage;
@@ -107,16 +107,22 @@ public class DualisConnection {
 		}
 		page = anchorMonat.click();
 
+		getEventsFromPage(page, events);
+
+		return events;
+	}
+
+	private void getEventsFromPage(HtmlPage page, final List<VEvent> events) {
 		for (HtmlElement elem : page.getElementsByTagName("div")) {
 			if (!elem.getAttribute("class").equals("tbMonthDay"))
 				continue;
-			final Date day;
+			final Calendar cday = Calendar.getInstance();
 			Object dayTitle = elem
 					.getFirstByXPath("div[@class='tbsubhead']/a/@title");
 			if (dayTitle instanceof DomAttr) {
 				String value = ((DomAttr) dayTitle).getValue();
 				try {
-					day = dateFormat.parse(value);
+					cday.setTime(dateFormat.parse(value));
 				} catch (ParseException e) {
 					e.printStackTrace();
 					continue;
@@ -136,35 +142,35 @@ public class DualisConnection {
 					String timeEnd = matcher.group(2);
 					String room = matcher.group(3);
 					String title = matcher.group(4);
-					System.out.println(timeStart + "-" + timeEnd + "-" + room
-							+ "-" + title + "-" + day);
 					int hStart = Integer.parseInt(timeStart.split(":")[0]);
 					int mStart = Integer.parseInt(timeStart.split(":")[1]);
 					int hEnd = Integer.parseInt(timeEnd.split(":")[0]);
 					int mEnd = Integer.parseInt(timeEnd.split(":")[1]);
-					Date start = (Date) day.clone();
-					start.setHours(hStart);
-					start.setMinutes(mStart);
-					Date end = (Date) day.clone();
-					end.setHours(hEnd);
-					end.setMinutes(mEnd);
-					VEvent event = new VEvent.Builder().dtstart(start)
-							.dtstamp(start).dtend(end).summary(title).description(title)
+					Calendar cstart = (Calendar) cday.clone();
+					cstart.set(Calendar.HOUR_OF_DAY, hStart);
+					cstart.set(Calendar.MINUTE, mStart);
+
+					Calendar cend = (Calendar) cday.clone();
+					cend.set(Calendar.HOUR_OF_DAY, hEnd);
+					cend.set(Calendar.MINUTE, mEnd);
+
+					cstart.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+					cend.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
+					VEvent event = new VEvent.Builder().dtstart(cstart)
+							.dtstamp(cstart).dtend(cend).summary(title).description(title)
 							.location(room).status("CONFIRMED").build();
 					events.add(event);
 				} else {
-					System.err.println("Skip: " + desc + " at day " + day);
+					System.err.println("Skip: " + desc + " at day " + cday.getTime());
 				}
 			}
 		}
-
-		return events;
 	}
 
 	// Parse Dates
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat(
 			"dd.MM.yyyy");
-	
+
 	// Appointment Link Title
 	// example: 08:15 - 10:45 / HOR-121 / Open Source Systeme
 	private static final Pattern appLinkPattern = Pattern
