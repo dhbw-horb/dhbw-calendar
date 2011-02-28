@@ -103,9 +103,20 @@ public class DualisConnection {
 			anchorMonat = page.getAnchorByText("Monat");
 		} catch (ElementNotFoundException e) {
 			throw new DualisException.DualisScrapingException(
-					"Link Studenplan 'Woche' nicht gefunden", e);
+					"Link Studenplan 'Monat' nicht gefunden", e);
 		}
 		page = anchorMonat.click();
+
+		getEventsFromPage(page, events);
+
+		HtmlAnchor anchorNextMonth;
+		try {
+			anchorNextMonth = page.getAnchorByName("skipForward_btn");
+		} catch (ElementNotFoundException e) {
+			throw new DualisException.DualisScrapingException(
+					"Link Studenplan 'Nächster Monat' nicht gefunden", e);
+		}
+		page = anchorNextMonth.click();
 
 		getEventsFromPage(page, events);
 
@@ -157,11 +168,13 @@ public class DualisConnection {
 					cstart.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
 					cend.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
 					VEvent event = new VEvent.Builder().dtstart(cstart)
-							.dtstamp(cstart).dtend(cend).summary(title).description(title)
-							.location(room).status("CONFIRMED").build();
+							.dtstamp(cstart).dtend(cend).summary(title)
+							.description(title).location(room)
+							.status("CONFIRMED").build();
 					events.add(event);
 				} else {
-					System.err.println("Skip: " + desc + " at day " + cday.getTime());
+					System.err.println("Skip: " + desc + " at day "
+							+ cday.getTime());
 				}
 			}
 		}
