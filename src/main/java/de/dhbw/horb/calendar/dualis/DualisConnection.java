@@ -1,6 +1,7 @@
 package de.dhbw.horb.calendar.dualis;
 
 import java.io.IOException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,11 +11,18 @@ import java.util.TimeZone;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.w3c.css.sac.CSSException;
+import org.w3c.css.sac.CSSParseException;
+import org.w3c.css.sac.ErrorHandler;
 
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+import com.gargoylesoftware.htmlunit.IncorrectnessListener;
+import com.gargoylesoftware.htmlunit.Page;
+import com.gargoylesoftware.htmlunit.StatusHandler;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomAttr;
+import com.gargoylesoftware.htmlunit.html.HTMLParserListener;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
@@ -56,7 +64,55 @@ public class DualisConnection {
 		final WebClient webClient = new WebClient();
 		final List<VEvent> events = new ArrayList<VEvent>();
 
+		webClient.setIncorrectnessListener(new IncorrectnessListener() {
+			@Override
+			public void notify(String message, Object origin) {
+				System.out.println("=======");
+				System.out.println(origin.getClass());
+			}
+		});
+		// not used while setCssEnabled(false)
+		webClient.setCssErrorHandler(new ErrorHandler() {
+			@Override
+			public void warning(CSSParseException exception)
+					throws CSSException {
+				System.out.println("CSS Exception: " + exception.getMessage());
+			}
+
+			@Override
+			public void fatalError(CSSParseException exception)
+					throws CSSException {
+				System.out.println("CSS Exception: " + exception.getMessage());
+			}
+
+			@Override
+			public void error(CSSParseException exception) throws CSSException {
+				System.out.println("CSS Exception: " + exception.getMessage());
+			}
+		});
+		webClient.setStatusHandler(new StatusHandler() {
+			@Override
+			public void statusMessageChanged(Page page, String message) {
+				System.out
+						.println("DualisConnection.getEvents().new StatusHandler() {...}.statusMessageChanged()");
+			}
+		});
+		webClient.setHTMLParserListener(new HTMLParserListener() {
+			@Override
+			public void warning(String message, URL url, int line, int column,
+					String key) {
+				// ignore silently
+			}
+
+			@Override
+			public void error(String message, URL url, int line, int column,
+					String key) {
+				// ignore silently
+			}
+		});
+		webClient.setPrintContentOnFailingStatusCode(false);
 		webClient.setJavaScriptEnabled(false);
+		webClient.setCssEnabled(false);
 		loginPage = webClient.getPage(DUALIS_URL);
 		try {
 			loginForm = loginPage.getFormByName("cn_loginForm");
