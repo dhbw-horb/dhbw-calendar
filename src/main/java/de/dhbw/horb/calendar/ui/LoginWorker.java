@@ -1,9 +1,18 @@
 package de.dhbw.horb.calendar.ui;
 
 import java.io.IOException;
+import java.net.URL;
+
+import org.w3c.css.sac.CSSException;
+import org.w3c.css.sac.CSSParseException;
+import org.w3c.css.sac.ErrorHandler;
 
 import com.gargoylesoftware.htmlunit.ElementNotFoundException;
+import com.gargoylesoftware.htmlunit.IncorrectnessListener;
+import com.gargoylesoftware.htmlunit.Page;
+import com.gargoylesoftware.htmlunit.StatusHandler;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.html.HTMLParserListener;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlInput;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
@@ -29,6 +38,56 @@ class LoginWorker implements Runnable {
 		this.password = password;
 
 		client = new WebClient();
+		client.setIncorrectnessListener(new IncorrectnessListener() {
+			@Override
+			public void notify(String message, Object origin) {
+				System.out.println("=======");
+				System.out.println(origin.getClass());
+			}
+		});
+		// not used while setCssEnabled(false)
+		client.setCssErrorHandler(new ErrorHandler() {
+			@Override
+			public void warning(CSSParseException exception)
+					throws CSSException {
+				System.out.println("CSS Exception: " + exception.getMessage());
+			}
+
+			@Override
+			public void fatalError(CSSParseException exception)
+					throws CSSException {
+				System.out.println("CSS Exception: " + exception.getMessage());
+			}
+
+			@Override
+			public void error(CSSParseException exception) throws CSSException {
+				System.out.println("CSS Exception: " + exception.getMessage());
+			}
+		});
+		client.setStatusHandler(new StatusHandler() {
+			@Override
+			public void statusMessageChanged(Page page, String message) {
+				System.out
+						.println("DualisConnection.getEvents().new StatusHandler() {...}.statusMessageChanged()");
+			}
+		});
+		client.setHTMLParserListener(new HTMLParserListener() {
+			@Override
+			public void warning(String message, URL url, int line, int column,
+					String key) {
+				// ignore silently
+			}
+
+			@Override
+			public void error(String message, URL url, int line, int column,
+					String key) {
+				// ignore silently
+			}
+		});
+		client.setPrintContentOnFailingStatusCode(false);
+		client.setJavaScriptEnabled(false);
+		client.setCssEnabled(false);
+
 	}
 
 	private void step1() throws Exception {
@@ -72,7 +131,7 @@ class LoginWorker implements Runnable {
 			listener.setProgress(0.8, "Prüfe Login");
 			step4();
 			listener.setProgress(1.0, "Erfolgreich");
-			
+
 			listener.success(username,password);
 		} catch (Exception e) {
 			e.printStackTrace();

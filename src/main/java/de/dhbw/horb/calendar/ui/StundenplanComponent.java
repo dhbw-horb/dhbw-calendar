@@ -2,10 +2,10 @@ package de.dhbw.horb.calendar.ui;
 
 import java.util.Date;
 
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Button.ClickListener;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.ProgressIndicator;
 import com.vaadin.ui.Table;
@@ -36,8 +36,8 @@ public class StundenplanComponent extends FormLayout {
 					try {
 						for (VEvent vevent : dualisConnection.getEvents()) {
 							synchronized (getApplication()) {
-								table.addItem(new Object[] { vevent.dtstart,
-										vevent.dtend, vevent.summary,
+								table.addItem(new Object[] { vevent.dtstart.getTime(),
+										vevent.dtend.getTime(), vevent.summary,
 										vevent.location },
 										vevent.dtstart.getTime());
 							}
@@ -81,6 +81,7 @@ public class StundenplanComponent extends FormLayout {
 			table.addContainerProperty("end", Date.class, "");
 			table.addContainerProperty("summary", String.class, "");
 			table.addContainerProperty("location", String.class, "");
+
 		}
 	}
 
@@ -95,8 +96,6 @@ public class StundenplanComponent extends FormLayout {
 		layout.setSizeFull();
 
 		addComponent(layout);
-		layout.setComponentAlignment(
-				buttonFetch,
-				Alignment.MIDDLE_CENTER);
+		layout.setComponentAlignment(buttonFetch, Alignment.MIDDLE_CENTER);
 	}
 }
