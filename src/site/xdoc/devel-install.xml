@@ -21,6 +21,71 @@
 				</p>
 			</subsection>
 		</section>
+		<section name="Installation unter SLES 11.1">
+			<p>
+				Es muss ein halbwegs aktuelles Java-JDK installiert sein, dieses
+				kann von
+				<a href="http://java.sun.com">java.sun.com</a>
+				für Linux/i386 heruntergeladen werden.
+			</p>
+			<p>
+				Für die Ausführung von dhbwcalender wird ein neuer Benutzer
+				mit Namen
+				<tt>dhbwcalendar</tt>
+				angelegt.
+			</p>
+			<p>
+				maven2 wird von
+				<a href="http://maven.apache.org">maven.apache.org</a>
+				installiert in
+				<tt>/home/dhbwcalendar/share/apache-maven-2.2.1/</tt>
+			</p>
+			<p>
+				Für den Benutzer dhbwcalendar wird in seiner <tt>.profile</tt> Datei die Umgebungsvariablen
+				<tt>JAVA_HOME</tt>
+				,
+				<tt>M2_HOME</tt>
+				(maven) entsprechend gesetzt
+			</p>
+			<p>
+				git wird mit zypper installiert:
+				<source># zypper ar \
+					"http://download.opensuse.org/repositories/devel:/tools:/scm/SLE_11/devel:tools:scm.repo"
+					# zypper install git
+					# su -l dhbwcalendar
+					$ git clone ....</source>
+			</p>
+			<p>
+				Da im produktiven Setup jetty nicht von "aussen" erreichbar sein
+				soll wird jetty konfiguriert nur auf
+				<i>localhost</i>
+				zu horchen.
+				<source>
+					&lt;connectors&gt;
+					&lt;connector
+					implementation=&quot;org.mortbay.jetty.nio.SelectChannelConnector&quot;&gt;
+					&lt;port&gt;8080&lt;/port&gt;
+					&lt;host&gt;127.0.0.1&lt;/host&gt;
+					&lt;/connector&gt;
+					&lt;/connectors&gt;</source>
+			</p>
+			<p>
+				Bei vaadin wird der
+				<i>productionMode</i>
+				aktiviert
+				<tt>src/main/webapp/WEB-INF/web.xml:</tt>
+				<source>
+					&lt;context-param&gt;
+					&lt;param-name&gt;productionMode&lt;/param-name&gt;
+					&lt;param-value&gt;true&lt;/param-value&gt;
+					&lt;description&gt;Vaadin production mode&lt;/description&gt;
+					&lt;/context-param&gt;</source>
+			</p>
+			<p>
+				<tt>mvn jetty:run</tt>
+				startet Jetty über Maven als embedded Servlet Container.
+			</p>
+		</section>
 	</body>
 </document>
 
