@@ -3,11 +3,18 @@ package de.dhbw.horb.calendar.ics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VCalendar {
+/**
+ * Represent an iCalender Object.
+ *
+ * A iCalender object can consist of many components of different type. They are
+ * implemented as subclasses of {@link AbstractICSType} and can be added to an
+ * instance of {@link ICalendarObject}.
+ */
+public class ICalendarObject {
 	List<AbstractICSType> icsObjects = new ArrayList<AbstractICSType>();
 	private final String title;
 
-	public VCalendar(final String title) {
+	public ICalendarObject(final String title) {
 		this.title = title;
 	}
 
@@ -16,8 +23,8 @@ public class VCalendar {
 	}
 
 	/**
-	 * 
-	 * @return
+	 *
+	 * @return serialized iCalendar Object
 	 */
 	public String serialize() {
 		final StringBuilder sb = new StringBuilder();
@@ -38,9 +45,9 @@ public class VCalendar {
 		//
 		sb.append("X-WR-TIMEZONE:UTC\n");
 		// Name des Kalenders
-		sb.append("X-WR-CALDESC:" + AbstractICSType.escapeText(title)+"\n");
-		sb.append("X-WR-CALNAME:" + AbstractICSType.escapeText(title)+"\n");
-		
+		sb.append("X-WR-CALDESC:" + AbstractICSType.escapeText(title) + "\n");
+		sb.append("X-WR-CALNAME:" + AbstractICSType.escapeText(title) + "\n");
+
 		// Elemente
 		for (AbstractICSType ics : icsObjects) {
 			sb.append(ics.serialize());

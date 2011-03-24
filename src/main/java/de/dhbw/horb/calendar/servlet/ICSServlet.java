@@ -1,4 +1,4 @@
-package de.dhbw.horb.calendar;
+package de.dhbw.horb.calendar.servlet;
 
 import java.io.IOException;
 
@@ -7,10 +7,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import de.dhbw.horb.calendar.dualis.DualisConnection;
 import de.dhbw.horb.calendar.dualis.DualisException;
-import de.dhbw.horb.calendar.ics.VCalendar;
-import de.dhbw.horb.calendar.ics.VEvent;
-import de.dhbw.horb.calendar.util.AuthenticatedServlet;
+import de.dhbw.horb.calendar.ics.ICalendarObject;
+import de.dhbw.horb.calendar.ics.VEventComponent;
 
+/**
+ * Das ICS-Servlet ist ein HTTP-Servlet das von der Kalenderapplikation
+ * aufgerufen wird um die iCalendar Daten zu bekommen.
+ */
 public class ICSServlet extends AuthenticatedServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -23,12 +26,12 @@ public class ICSServlet extends AuthenticatedServlet {
 			HttpServletResponse response, String username, String password)
 			throws IOException {
 		response.setHeader("Content-Type", "text/calendar; charset=utf-8");
-		
-		VCalendar calendar = new VCalendar("DHBW Calendar");
+
+		ICalendarObject calendar = new ICalendarObject("DHBW Calendar");
 		try {
 			DualisConnection connection = new DualisConnection(username,
 					password);
-			for (VEvent event : connection.getEvents()) {
+			for (VEventComponent event : connection.getEvents()) {
 				calendar.add(event);
 			}
 		} catch (DualisException e) {

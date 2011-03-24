@@ -21,7 +21,7 @@ import de.dhbw.horb.calendar.dualis.DualisConnection;
 import de.dhbw.horb.calendar.dualis.DualisException;
 import de.dhbw.horb.calendar.dualis.DualisException.DualisAuthenticationException;
 
-class LoginWorker implements Runnable {
+class InteractiveLoginWorker implements Runnable {
 	private final WebClient client;
 	private HtmlPage page = null;
 	private HtmlForm loginForm = null;
@@ -32,7 +32,7 @@ class LoginWorker implements Runnable {
 	private final String password;
 	private final LoginWorkerListener listener;
 
-	public LoginWorker(final LoginWorkerListener listener, final String username, final String password) {
+	public InteractiveLoginWorker(final LoginWorkerListener listener, final String username, final String password) {
 		this.listener = listener;
 		this.username = username;
 		this.password = password;

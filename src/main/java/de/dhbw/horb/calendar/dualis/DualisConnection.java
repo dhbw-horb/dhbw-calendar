@@ -31,7 +31,7 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import de.dhbw.horb.calendar.dualis.DualisException.DualisAuthenticationException;
 import de.dhbw.horb.calendar.dualis.DualisException.DualisScrapingException;
-import de.dhbw.horb.calendar.ics.VEvent;
+import de.dhbw.horb.calendar.ics.VEventComponent;
 
 public class DualisConnection {
 	public static final String DUALIS_URL = "https://dualis.dhbw.de/scripts/mgrqcgi?APPNAME=CampusNet&PRGNAME=EXTERNALPAGES&ARGUMENTS=-N000000000000001,-N,-Awelcome";
@@ -56,13 +56,13 @@ public class DualisConnection {
 		this.password = password;
 	}
 
-	public List<VEvent> getEvents() throws FailingHttpStatusCodeException,
+	public List<VEventComponent> getEvents() throws FailingHttpStatusCodeException,
 			IOException, DualisScrapingException, DualisAuthenticationException {
 		HtmlPage page, loginPage;
 		final HtmlForm loginForm;
 		final HtmlInput usernameField, passwordField, submitButton;
 		final WebClient webClient = new WebClient();
-		final List<VEvent> events = new ArrayList<VEvent>();
+		final List<VEventComponent> events = new ArrayList<VEventComponent>();
 
 		webClient.setIncorrectnessListener(new IncorrectnessListener() {
 			@Override
@@ -179,7 +179,7 @@ public class DualisConnection {
 		return events;
 	}
 
-	private void getEventsFromPage(HtmlPage page, final List<VEvent> events) {
+	private void getEventsFromPage(HtmlPage page, final List<VEventComponent> events) {
 		for (HtmlElement elem : page.getElementsByTagName("div")) {
 			if (!elem.getAttribute("class").equals("tbMonthDay"))
 				continue;
@@ -223,7 +223,7 @@ public class DualisConnection {
 
 					cstart.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
 					cend.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
-					VEvent event = new VEvent.Builder().dtstart(cstart)
+					VEventComponent event = new VEventComponent.Builder().dtstart(cstart)
 							.dtstamp(cstart).dtend(cend).summary(title)
 							.description(title).location(room)
 							.status("CONFIRMED").build();

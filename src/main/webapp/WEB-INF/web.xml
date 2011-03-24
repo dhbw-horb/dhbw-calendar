@@ -6,7 +6,7 @@
 
 	<servlet>
 		<servlet-name>ics-connector</servlet-name>
-		<servlet-class>de.dhbw.horb.calendar.ICSServlet</servlet-class>
+		<servlet-class>de.dhbw.horb.calendar.servlet.ICSServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ics-connector</servlet-name>

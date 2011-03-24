@@ -3,7 +3,7 @@ package de.dhbw.horb.calendar.ics;
 import java.util.Calendar;
 import java.util.TimeZone;
 
-public class VEvent extends AbstractICSType {
+public class VEventComponent extends AbstractICSType {
 	public Calendar dtstamp = Calendar.getInstance();
 	public Calendar dtstart = Calendar.getInstance();
 	public Calendar dtend = Calendar.getInstance();
@@ -41,7 +41,7 @@ public class VEvent extends AbstractICSType {
 	}
 
 	public static class Builder {
-		VEvent event = new VEvent();
+		VEventComponent event = new VEventComponent();
 
 		public Builder dtstamp(Calendar cstart) {
 			event.dtstamp = cstart;
@@ -73,7 +73,7 @@ public class VEvent extends AbstractICSType {
 			return this;
 		}
 
-		public VEvent build() {
+		public VEventComponent build() {
 			return event;
 		}
 

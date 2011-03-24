@@ -4,6 +4,12 @@ import java.text.SimpleDateFormat;
 
 import org.apache.commons.lang.StringEscapeUtils;
 
+/**
+ * icalendar specifies Events, Todo, Journal, Free/Buse, TimeZone, Alarm
+ * Components.
+ *
+ * {@link AbstractICSType} is a superclass for those.
+ */
 public abstract class AbstractICSType {
 	/**
 	 * Serialisierert dieses Calenderteil. Dem Ergebnis Fehlt noch der vCalendar
@@ -14,6 +20,7 @@ public abstract class AbstractICSType {
 
 	/**
 	 * <b>RFC says:</b>
+	 *
 	 * <pre>
 	 * FORM #2: DATE WITH UTC TIME
 	 *
@@ -38,6 +45,6 @@ public abstract class AbstractICSType {
 	 * @return
 	 */
 	public static String escapeText(String text) {
-		return StringEscapeUtils.escapeJava(text); //XXX TODO
+		return StringEscapeUtils.escapeJava(text); // XXX TODO
 	}
 }

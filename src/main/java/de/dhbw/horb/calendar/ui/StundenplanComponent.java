@@ -12,7 +12,7 @@ import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
 
 import de.dhbw.horb.calendar.dualis.DualisConnection;
-import de.dhbw.horb.calendar.ics.VEvent;
+import de.dhbw.horb.calendar.ics.VEventComponent;
 import de.dhbw.horb.calendar.ui.MyApplication.MyMainWindow;
 
 public class StundenplanComponent extends FormLayout {
@@ -34,7 +34,7 @@ public class StundenplanComponent extends FormLayout {
 							myMainWindow.getUsername(),
 							myMainWindow.getPassword());
 					try {
-						for (VEvent vevent : dualisConnection.getEvents()) {
+						for (VEventComponent vevent : dualisConnection.getEvents()) {
 							synchronized (getApplication()) {
 								table.addItem(new Object[] { vevent.dtstart.getTime(),
 										vevent.dtend.getTime(), vevent.summary,

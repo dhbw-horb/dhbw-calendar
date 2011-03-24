@@ -1,4 +1,4 @@
-package de.dhbw.horb.calendar.util;
+package de.dhbw.horb.calendar.servlet;
 
 import java.io.IOException;
 import java.util.StringTokenizer;
@@ -9,13 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringEscapeUtils;
-
-import sun.misc.BASE64Decoder;
+import org.apache.ws.commons.util.Base64;
 
 public abstract class AuthenticatedServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	private String loginRealm = "Servlet Login";
 
 	public void setLoginRealm(String loginRealm) {
@@ -35,10 +33,7 @@ public abstract class AuthenticatedServlet extends HttpServlet {
 				if (basic.equalsIgnoreCase("Basic")) {
 					String credentials = st.nextToken();
 
-					// XXX fixme, dont use sun.misc
-					BASE64Decoder decoder = new BASE64Decoder();
-					String userPass = new String(
-							decoder.decodeBuffer(credentials));
+					String userPass = new String(Base64.decode(credentials));
 
 					// The decoded string is in the form
 					// "userID:password".

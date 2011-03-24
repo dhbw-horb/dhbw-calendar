@@ -13,7 +13,7 @@ import com.vaadin.ui.ProgressIndicator;
 import com.vaadin.ui.TabSheet;
 import com.vaadin.ui.Window;
 
-import de.dhbw.horb.calendar.ui.LoginWorker.LoginWorkerListener;
+import de.dhbw.horb.calendar.ui.InteractiveLoginWorker.LoginWorkerListener;
 
 public class MyApplication extends Application {
 	private static final long serialVersionUID = 1L;
@@ -142,7 +142,7 @@ public class MyApplication extends Application {
 
 				@Override
 				public void onLogin(LoginEvent event) {
-					new Thread(new LoginWorker(loginWorkerListener, event
+					new Thread(new InteractiveLoginWorker(loginWorkerListener, event
 							.getLoginParameter("username"), event
 							.getLoginParameter("password"))).start();
 					loginForm.setVisible(false);
