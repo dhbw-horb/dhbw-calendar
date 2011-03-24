@@ -1,5 +1,4 @@
-de.dhbw.horb.calendar
 de.dhbw.horb.calendar.dualis
 de.dhbw.horb.calendar.ics
+de.dhbw.horb.calendar.servlet
 de.dhbw.horb.calendar.ui
-de.dhbw.horb.calendar.util
