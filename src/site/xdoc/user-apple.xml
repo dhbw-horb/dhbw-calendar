@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Anbindung Microsoft Outlook</title>
+		<author>Yves Fischer</author>
+		<date>27.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="Anbindung Apple iPhone">
+			<p>In den Einstellungen ihres iPhone können Sie iCalendar Ressourcen
+				für Kalendereinträge hinzufügen.</p>
+
+			<img src="images/iphone.jpg" alt="Windows Live im Web" />
+
+		</section>
+	</body>
+</document>
+
