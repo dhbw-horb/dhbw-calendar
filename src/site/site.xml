@@ -11,6 +11,7 @@
 		<menu name="User Guide">
 			<item name="Allgemein" href="user-allgemein.html" />
 			<item name="Google Kalender" href="user-google.html" />
+			<item name="Apple iPhone" href="user-apple.html" />
 			<item name="Mozilla Lightning" href="user-lightning.html" />
 			<item name="Microsoft Outlook" href="user-outlook.html" />
 		</menu>
