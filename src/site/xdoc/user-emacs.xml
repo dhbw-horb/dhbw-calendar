@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+	<properties>
+		<title>Anbindung GNU Emacs</title>
+		<author>Yves Fischer</author>
+		<date>24.02.2011</date>
+	</properties>
+
+	<body>
+		<section name="GNU Emacs iCalendar Import">
+			<p>
+				siehe auch
+				<a
+					href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Importing-Diary.html">GNU Emacs Manual: 38.12 Importing and Exporting Diary Entries
+				</a>
+				.
+			</p>
+			<source>(require 'url)
+(require 'icalendar)
+
+(defconst dualis-url "https://10.2.2.21/dhbwcalendar/ics")
+(defconst dualis-do-not-ask t)
+
+(defun dualis-import ()
+  (let ((buffer (url-retrieve-synchronously dualis-url)))
+    (save-excursion
+      (set-buffer buffer)
+      (icalendar-import-buffer nil dualis-do-not-ask)
+      (kill-buffer (current-buffer)))))
+			</source>
+		</section>
+	</body>
+</document>
+
