@@ -88,7 +88,48 @@
   \end{center}
 \end{frame}
 
-\section{DHBW-Calendar}
+\begin{frame}
+\includegraphics[width=0.9\paperwidth]{images/overview-slide.png}
+\end{frame}
+
+\section{Implementierung}
+\begin{frame}\frametitle{Mögliche Schnittstellen}
+  \begin{itemize}
+  \item Apple iPhone
+    \begin{itemize}
+    \item Direkte iCalendar Unterstützung.
+    \end{itemize}
+  \item Google Kalender
+    \begin{itemize}
+    \item schliesst Android Smartphone ein.
+    \item Unterstützt Abfragen externe iCalendar Ressourcen.
+    \end{itemize}
+  \item Mozilla Thunderbird/Lightning
+    \begin{itemize}
+    \item Direkte iCalendar Unterstützung.
+    \end{itemize}
+  \item Microsoft Outlook
+    \begin{itemize}
+    \item Direkte iCalendar Unterstützung.
+    \end{itemize}
+  \item Microsoft Windows Live
+    \begin{itemize}
+    \item schliesst Windows Mail, Windows Mobile ein.
+    \item Unterstützt Abfragen externer iCalendar Ressourcen.
+    \end{itemize}
+    \pause
+  \item \textsc{DUALIS}
+    \begin{itemize}
+    \item soweit keine zugänglichen Schnittstellen bekannt.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Architektur}
+\includegraphics[width=0.8\paperwidth]{images/arch.png}
+\end{frame}
+
+\section{Screenshots}
 \begin{frame}\frametitle{Apple iPhone}
   \begin{figure}
     \centering
@@ -105,7 +146,7 @@
     \includegraphics[height=0.5\paperheight]{images/dhbwcalendar-google.jpg}
   \end{figure}
   \begin{itemize}
-    \item Unterstützt Abfragen externe iCalendar Ressourcen.
+    \item Unterstützt Abfragen externer iCalendar Ressourcen.
   \end{itemize}
 \end{frame}
 
@@ -119,6 +160,15 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}\frametitle{Outlook 2007}
+  \begin{figure}
+    \centering
+    \includegraphics[height=0.6\paperheight]{images/dhbwcalendar-outlook2007.jpg}
+  \end{figure}
+  \begin{itemize}
+    \item Unterstützt Abfragen externer iCalendar Ressourcen.
+  \end{itemize}
+\end{frame}
 
 \begin{frame}\frametitle{Windows Live}
   \begin{figure}
@@ -159,15 +209,35 @@
   \end{itemize}
 \end{frame}
 
-\section{Implementierung}
-\begin{frame}
-\begin{itemize}
-\item architektur... usw
-\item maven,java,foo
-\item @github
-\end{itemize}
+
+\section{Projekt}
+
+\begin{frame}\frametitle{Open-Source Projekt}
+  \begin{itemize}
+  \item Java Projekt mit Apache-maven als Werkzeug
+  \item Github Hosting für
+    \begin{itemize}
+    \item Code
+    \item Issues
+    \item Projektwebsite \url{http://dhbw-horb.github.com/dhbw-calendar}
+    \end{itemize}
+  \item Projektwebsite mit maven generiert:
+    \begin{itemize}
+      \item Java-Docs
+      \item Dependencies Report
+      \item Benutzeranleitung
+      \item Dokumentation
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+\begin{center}
+  \huge ------ \\
+  \url{http://dhbw-horb.github.com/dhbw-calendar}
+\end{center}
+\end{frame}
 
 %% \appendix
 %% %\section{Schrottfolien}
