@@ -1,0 +1,62 @@
+<?php
+/*
+    ics.php "reverse-proxy"
+    Copyright (C) 2011 Yves Fischer (i08005)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Affero General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Affero General Public License for more details.
+
+    You should have received a copy of the GNU Affero General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+$proxy_url = "https://dualical.ba-horb.de:8443/dhbwcalendar/ics";
+$curl_handler = curl_init($proxy_url);
+
+curl_setopt($curl_handler, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl_handler, CURLOPT_BINARYTRANSFER, true);
+curl_setopt($curl_handler, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+curl_setopt($curl_handler, CURLOPT_WRITEFUNCTION, 'readResponse');
+curl_setopt($curl_handler, CURLOPT_HEADERFUNCTION, 'readHeaders');
+curl_setopt($curl_handler, CURLOPT_SSLVERSION, 3);
+curl_setopt($curl_handler, CURLOPT_CAINFO, getcwd() . "/ics_certificate.pem");
+curl_setopt($curl_handler, CURLOPT_SSL_VERIFYPEER, 1);
+curl_setopt($curl_handler, CURLOPT_VERBOSE, 0);
+
+function readResponse(&$curl, $string) {
+	echo $string;
+	return strlen($string);
+}
+
+function readHeaders(&$curl, $string) {
+        $length = strlen($string);
+        if ($string !== "\r\n") {
+		header(rtrim($string));
+        }
+        return $length;
+}
+
+$headers = apache_request_headers();
+$client_headers = array();
+foreach ($headers as $header => $value) {
+    switch($header) {
+	case 'Host':
+	    break;
+	default:
+            $client_headers[] = sprintf('%s: %s', $header, $value);
+	    break;
+    }
+} 
+
+curl_setopt($curl_handler, CURLOPT_HTTPHEADER, $client_headers);
+curl_exec($curl_handler);
+//echo print_r(curl_getinfo($curl_handler), true);
+?>
