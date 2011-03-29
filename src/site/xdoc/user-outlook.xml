@@ -22,6 +22,21 @@
 				<img src="images/windows-live-desktop.jpg" alt="Windows Live im Web" />
 			</subsection>
 		</section>
+		<section name="Anbindung Microsoft Outlook 2007">
+			<p>Bei der Nutzung von Microsoft Outlook 2007 muss beachtet werden,
+				dass der in Outlook integrierte Dialog nicht richtig funktioniert.
+			</p>
+			<p>
+				Der Kalender kann hinzugefügt werden, in dem im Internet Explorer
+				eine URL
+				<tt>webcal://host/path</tt>
+				geöffnet wird. Folgend sollte nach einigen Bestätigungsdialogen die
+				Anmeldedaten abgefragt werden.
+			</p>
+			<p>
+				<img src="images/outlook-2007.jpg" alt="Outlook 2007" />
+			</p>
+		</section>
 	</body>
 </document>
 
