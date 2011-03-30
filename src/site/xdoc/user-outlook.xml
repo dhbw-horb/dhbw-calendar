@@ -14,6 +14,15 @@
 			<p>Klicken sie in der Toolbar auf Subscribe/Abonnieren. Geben Sie als
 				Kalendar URL die URL ihrer DHBW Calendar Installation an. Der Server
 				muss für Microsoft erreichbar sein.</p>
+				<p>Achtung, dieses Vorgehen ist nur
+				theoretisch möglich, praktisch
+				unterstützt Windows Live keine
+				Authentifizierung bei externen
+				iCalendar Resourcen. Es ist daher
+				nötig, die iCalendar Daten über
+				Drittprogramme zu beziehen und Windows
+				Live ohne Authentifizierung zur
+				Verfügung zu stellen.</p>
 
 			<subsection name="Screenshot Web">
 				<img src="images/windows-live-web.jpg" alt="Windows Live im Web" />
