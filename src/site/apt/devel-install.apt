@@ -1,0 +1,174 @@
+            ------
+        Installation Guide
+            ------
+          Yves Fischer
+            ------
+          05.04.2011
+
+Installation
+
+* Mit Embedded Servlet Container
+  
+  <<<mvn jetty:run>>>
+
+  Standardmäßig lauscht jetty nun auf Port 8080
+
+* Mit Web-Archive (.war)
+
+  Ein Web-Archive kann mit dem Maven Kommando <<<mvn package>>> gebaut werden.
+
+
+Installation unter SLES 11.1
+
+* Vorbereitung
+
+  Es muss ein halbwegs aktuelles Java-JDK installiert sein, dieses
+kann z.B. von {{{http://java.sun.com}}Oracle}} für Linux/i386 bezogen
+werden.
+
+  Für die Ausführung von dhbw-calendar wird ein neuer Benutzer,
+z.B. mit namen <<<dhbwcalendar>>> angelegt.
+
+  {{{http://maven.apache.org}Maven2}} in
+<<<$HOME/share/apache-maven-2.2.1>>> installiert.
+
+  Für den angelegten Benutzer wird in seiner
+<<<$HOME/.profile>>>-Datei die Umgebungsvariablen <<<JAVA_HOME>>> und
+<<<M2_HOME>>> auf die jeweiligen Installationspfade gesetzt.
+
+  Git kann mit dem SuSe-Tool <<<zypper>>> installiert werden:
+
+---------------------------
+# zypper ar \
+  "http://download.opensuse.org/repositories/devel:/tools:/scm/SLE_11/devel:tools:scm.repo"
+# zypper install git
+---------------------------
+
+
+* Einrichtung
+
+  Das Projektverzeichnis wird mit git geklont:
+
+---------------------------------
+# su -l dhbwcalendar
+$ git clone ....dhbw-calendar URL...
+---------------------------------
+
+  Falls jetty verwendet wird und er im produktiven Setup nur auf dem Loopback
+Interface lauschen soll wird das in der <<<pom.xml>>> konfiguriert:
+
+--------------------------------------
+<connectors>
+  <connector
+      implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+    <port>8080</port>
+    <host>127.0.0.1</host>
+  </connector>
+</connectors>
+--------------------------------------
+
+  Bei vaadin wird der <productionmode> im Deskriptor der Web-Applikation
+aktiviert:
+
+---------------------------
+<context-param>
+  <param-name>productionMode</param-name>
+  <param-value>true</param-value>
+  <description>Vaadin production mode</description>
+</context-param>
+---------------------------
+
+* SSL
+
+** Zertifikat erstellen
+
+  <Achtung:> Vor- Nachname ist der Common-Name = Hostname.
+
+---------------------------------------
+% keytool -keystore keystore -alias jetty -genkey -keyalg RSA
+Geben Sie das Keystore-Passwort ein:
+Geben Sie das Passwort erneut ein:
+
+Wie lautet Ihr Vor- und Nachname?
+[Unknown]: dualical.ba-horb.de
+Wie lautet der Name Ihrer organisatorischen Einheit?
+[Unknown]: DHBW Stuttgart Campus Horb
+Wie lautet der Name Ihrer Organisation?
+[Unknown]: Duale Hochschule Baden-Württemberg
+Wie lautet der Name Ihrer Stadt oder Gemeinde?
+[Unknown]: Horb
+Wie lautet der Name Ihres Bundeslandes oder Ihrer Provinz?
+[Unknown]: Baden-Württemberg
+Wie lautet der Landescode (zwei	Buchstaben) für	diese Einheit?
+[Unknown]: DE
+Ist CN=DHBW Calendar,OU=DHBW Stuttgart Campus Horb, O=Duale Hochschule Baden-Württemberg, L=Horb, ST=Baden-Württemberg,	C=DE richtig?
+[Nein]: Ja
+Geben Sie das Passwort für "jetty" ein.
+(EINGABETASTE, wenn Passwort dasselbe wie für Keystore):
+---------------------------------------
+
+** SSL in Jetty konfigurieren
+
+----------------------------------------------
+<configuration>
+  <connectors>
+    <connector
+        implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+      <port>8080</port>
+    </connector>
+
+    <connector
+        implementation="org.mortbay.jetty.ssl.SslSelectChannelConnector">
+      <port>8443</port>
+      <keystore>${basedir}/server.keystore</keystore>
+      <keyPassword>bla</keyPassword>
+      <password>bla</password>
+    </connector>
+  </connectors>
+</configuration>
+<dependencies>
+  <dependency>
+    <groupId>org.mortbay.jetty</groupId>
+    <artifactId>jetty-ssl</artifactId>
+    <version>7.0.0.pre5</version>
+  </dependency>
+</dependencies> 
+-----------------------------------------------
+
+** Zertifikationsinfos
+
+  SSL-Fingerprint:
+
+--------------------------------
+
+% keytool -list -keystore server.keystore -rfc
+Geben Sie das Keystore-Passwort ein:
+Keystore-Typ: JKS
+Keystore-Provider: SUN
+
+Ihr Keystore enthält 1 Eintrag/-äge.
+
+jetty, 29.03.2011, PrivateKeyEntry, Zertifikatsfingerabdruck (MD5):
+B6:CA:AF:1C:8C:B7:38:38:36:2A:30:3C:A5:C2:54:20
+
+  -----BEGIN CERTIFICATE-----
+.... /Zertifikat im PEM Format/
+  -----END CERTIFICATE-----				
+--------------------------------
+
+  Die Verbindung kann jetzt mit wget überprüft werden
+
+--------------------------------
+# wget --ca-certificate=certificate.pem \
+      https://dualical.ba-horb.de:8443/dhbwcalendar/
+--------------------------------
+				
+  Weitere Informationen zum Zertifikat zeigt OpenSSL in Klartext an:
+
+--------------------------------
+# openssl x509 -noout -text -in certificate.pem
+--------------------------------
+				
+* Zugriff von 'aussen'
+
+  Mit php und curl lässt sich eine reverse-Proxy nachahmen. Ein Beispiel findet sich unter: {{{./ics.php.txt}ics.php.txt}}.
