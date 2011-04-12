@@ -8,7 +8,7 @@
 Installation
 
 * Mit Embedded Servlet Container
-  
+
   <<<mvn jetty:run>>>
 
   Standardmäßig lauscht jetty nun auf Port 8080
@@ -132,7 +132,7 @@ Geben Sie das Passwort für "jetty" ein.
     <artifactId>jetty-ssl</artifactId>
     <version>7.0.0.pre5</version>
   </dependency>
-</dependencies> 
+</dependencies>
 -----------------------------------------------
 
 ** Zertifikationsinfos
@@ -153,7 +153,7 @@ B6:CA:AF:1C:8C:B7:38:38:36:2A:30:3C:A5:C2:54:20
 
   -----BEGIN CERTIFICATE-----
 .... /Zertifikat im PEM Format/
-  -----END CERTIFICATE-----				
+  -----END CERTIFICATE-----
 --------------------------------
 
   Die Verbindung kann jetzt mit wget überprüft werden
@@ -162,13 +162,13 @@ B6:CA:AF:1C:8C:B7:38:38:36:2A:30:3C:A5:C2:54:20
 # wget --ca-certificate=certificate.pem \
       https://dualical.ba-horb.de:8443/dhbwcalendar/
 --------------------------------
-				
+
   Weitere Informationen zum Zertifikat zeigt OpenSSL in Klartext an:
 
 --------------------------------
 # openssl x509 -noout -text -in certificate.pem
 --------------------------------
-				
+
 * Zugriff von 'aussen'
 
   Mit php und curl lässt sich eine reverse-Proxy nachahmen. Ein Beispiel findet sich unter: {{{./ics.php.txt}ics.php.txt}}.

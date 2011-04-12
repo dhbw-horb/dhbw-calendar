@@ -181,8 +181,9 @@ public class DualisConnection {
 
 	private void getEventsFromPage(HtmlPage page, final List<VEventComponent> events) {
 		for (HtmlElement elem : page.getElementsByTagName("div")) {
-			if (!elem.getAttribute("class").equals("tbMonthDay"))
+			if (!elem.getAttribute("class").equals("tbMonthDay")) {
 				continue;
+			}
 			final Calendar cday = Calendar.getInstance();
 			Object dayTitle = elem
 					.getFirstByXPath("div[@class='tbsubhead']/a/@title");
@@ -199,8 +200,9 @@ public class DualisConnection {
 				continue;
 			}
 			for (HtmlElement appLink : elem.getElementsByTagName("a")) {
-				if (!appLink.getAttribute("class").equals("apmntLink"))
+				if (!appLink.getAttribute("class").equals("apmntLink")) {
 					continue;
+				}
 				// title="08:15 - 10:45 / HOR-121 / Open Source Systeme"
 				String desc = StringUtils.strip(appLink.getAttribute("title"));
 				java.util.regex.Matcher matcher = appLinkPattern.matcher(desc);

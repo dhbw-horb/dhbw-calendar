@@ -14,7 +14,7 @@
 			<item name="Emacs Diary" href="user-emacs.html" />
 			<item name="iPhone" href="user-apple.html" />
 			<item name="Mozilla Lightning" href="user-lightning.html" />
-			<item name="Microsoft Outlook" href="user-outlook.html" />
+			<item name="Microsoft Tools" href="user-windows.html" />
 		</menu>
 		<menu name="Entwickler">
 			<item name="Install" href="devel-install.html" />

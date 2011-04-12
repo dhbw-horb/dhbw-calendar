@@ -3,6 +3,9 @@ package de.dhbw.horb.calendar.ics;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+/**
+ * VEvent Component of iCalendar
+ */
 public class VEventComponent extends AbstractICSType {
 	public Calendar dtstamp = Calendar.getInstance();
 	public Calendar dtstart = Calendar.getInstance();
@@ -43,32 +46,32 @@ public class VEventComponent extends AbstractICSType {
 	public static class Builder {
 		VEventComponent event = new VEventComponent();
 
-		public Builder dtstamp(Calendar cstart) {
+		public Builder dtstamp(final Calendar cstart) {
 			event.dtstamp = cstart;
 			return this;
 		}
 
-		public Builder dtstart(Calendar cstart) {
+		public Builder dtstart(final Calendar cstart) {
 			event.dtstart = cstart;
 			return this;
 		}
 
-		public Builder dtend(Calendar cend) {
+		public Builder dtend(final Calendar cend) {
 			event.dtend = cend;
 			return this;
 		}
 
-		public Builder summary(String summary) {
+		public Builder summary(final String summary) {
 			event.summary = summary;
 			return this;
 		}
 
-		public Builder description(String description) {
+		public Builder description(final String description) {
 			event.description = description;
 			return this;
 		}
 
-		public Builder location(String location) {
+		public Builder location(final String location) {
 			event.location = location;
 			return this;
 		}
@@ -77,7 +80,7 @@ public class VEventComponent extends AbstractICSType {
 			return event;
 		}
 
-		public Builder status(String status) {
+		public Builder status(final String status) {
 			event.status = status;
 			return this;
 		}

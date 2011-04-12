@@ -1,0 +1,46 @@
+            ------
+    Anbindung Windows Tools
+            ------
+         Yves Fischer
+            ------
+          12.04.2011
+
+Anbindung Microsoft Windows Live
+
+  Melden Sie sich bei Windows Live an. Rufen Sie die
+Kalendarfunktion auf.
+
+  Klicken sie in der Toolbar auf Subscribe/Abonnieren. Geben Sie als
+Kalendar URL die URL ihrer DHBW Calendar Installation an. Der Server
+muss für Microsoft erreichbar sein.
+
+  Achtung, dieses Vorgehen ist nur theoretisch möglich, praktisch
+unterstützt Windows Live keine Authentifizierung bei externen
+iCalendar Resourcen. Es ist daher nötig, die iCalendar Daten über
+Drittprogramme zu beziehen und Windows Live ohne Authentifizierung zur
+Verfügung zu stellen. Eine Möglichkeit ist es, durch ein Wrapper-Script
+die Authentifizierung über HTTP-GET Parameter zu steuern.
+
+* Windows Live im Web
+
+[images/windows-live-web.png] Windows Live im Web.
+
+* Windows Live mit Windows Mail
+
+[images/windows-live-desktop.jpg] Windows Live mit Windows Mail.
+
+* Windows Live mit Windows Mobile
+
+  todo
+
+
+Anbindung Microsoft Outlook 2007
+
+  Bei der Nutzung von Microsoft Outlook 2007 muss beachtet werden,
+dass der in Outlook integrierte Dialog nicht richtig funktioniert.
+
+  Der Kalender kann hinzugefügt werden, in dem im Internet Explorer
+eine URL 'webcal://host/path' geöffnet wird. Folgend sollte nach
+einigen Bestätigungsdialogen die Anmeldedaten abgefragt werden.
+
+[images/outlook-2007.jpg] Outlook 2007.

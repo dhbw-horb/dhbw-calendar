@@ -27,7 +27,7 @@
 \subtitle{\small\textit{Open-Source Projekt}}
 \author{Yves Fischer\\\vspace{.2cm}\tiny{TIT2008/NS}}
 \institute{DHBW Stuttgart Campus Horb}
-\date{Mittwoch 9. März}
+\date{\today}
 
 \begin{document}
 
@@ -97,25 +97,25 @@
   \begin{itemize}
   \item Apple iPhone
     \begin{itemize}
-    \item Direkte iCalendar Unterstützung.
+    \item Direkte iCalendar/HTTPS Unterstützung.
     \end{itemize}
   \item Google Kalender
     \begin{itemize}
     \item schliesst Android Smartphone ein.
-    \item Unterstützt Abfragen externe iCalendar Ressourcen.
+    \item Unterstützt Abfragen externer iCalendar/HTTPS Ressourcen.
     \end{itemize}
   \item Mozilla Thunderbird/Lightning
     \begin{itemize}
-    \item Direkte iCalendar Unterstützung.
+    \item Direkte iCalendar/HTTPS Unterstützung.
     \end{itemize}
   \item Microsoft Outlook
     \begin{itemize}
-    \item Direkte iCalendar Unterstützung.
+    \item Direkte iCalendar/HTTPS Unterstützung.
     \end{itemize}
   \item Microsoft Windows Live
     \begin{itemize}
     \item schliesst Windows Mail, Windows Mobile ein.
-    \item Unterstützt Abfragen externer iCalendar Ressourcen aber nur beschränkt.
+    \item beschränkt Abfragen von iCalendar/HTTP Resourcen.
     \end{itemize}
     \pause
   \item \textsc{DUALIS}
@@ -176,7 +176,9 @@
     \includegraphics[height=0.6\paperheight]{images/dhbwcalendar-live-web.jpg}
   \end{figure}
   \begin{itemize}
-    \item Unterstützt Abfragen externer iCalendar Ressourcen nur beschränkt.
+    \item Unterstützt kein SSL
+    \item Unterstützt keine HTTP-Authentifizierung
+    \item Workaround: Credentials in Query-String der URL
   \end{itemize}
 \end{frame}
 
