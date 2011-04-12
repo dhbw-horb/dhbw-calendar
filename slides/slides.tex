@@ -27,7 +27,7 @@
 \subtitle{\small\textit{Open-Source Projekt}}
 \author{Yves Fischer\\\vspace{.2cm}\tiny{TIT2008/NS}}
 \institute{DHBW Stuttgart Campus Horb}
-\date{Mittwoch 9. März}
+\date{\today}
 
 \begin{document}
 
@@ -89,11 +89,47 @@
 \end{frame}
 
 \begin{frame}
-
+\includegraphics[width=0.9\paperwidth]{images/overview-slide.png}
 \end{frame}
 
+\section{Implementierung}
+\begin{frame}\frametitle{Mögliche Schnittstellen}
+  \begin{itemize}
+  \item Apple iPhone
+    \begin{itemize}
+    \item Direkte iCalendar/HTTPS Unterstützung.
+    \end{itemize}
+  \item Google Kalender
+    \begin{itemize}
+    \item schliesst Android Smartphone ein.
+    \item Unterstützt Abfragen externer iCalendar/HTTPS Ressourcen.
+    \end{itemize}
+  \item Mozilla Thunderbird/Lightning
+    \begin{itemize}
+    \item Direkte iCalendar/HTTPS Unterstützung.
+    \end{itemize}
+  \item Microsoft Outlook
+    \begin{itemize}
+    \item Direkte iCalendar/HTTPS Unterstützung.
+    \end{itemize}
+  \item Microsoft Windows Live
+    \begin{itemize}
+    \item schliesst Windows Mail, Windows Mobile ein.
+    \item beschränkt Abfragen von iCalendar/HTTP Resourcen.
+    \end{itemize}
+    \pause
+  \item \textsc{DUALIS}
+    \begin{itemize}
+    \item soweit keine zugänglichen Schnittstellen bekannt.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
 
-\section{DHBW-Calendar}
+\begin{frame}\frametitle{Architektur}
+\includegraphics[width=0.8\paperwidth]{images/arch.png}
+\end{frame}
+
+\section{Screenshots}
 \begin{frame}\frametitle{Apple iPhone}
   \begin{figure}
     \centering
@@ -110,7 +146,7 @@
     \includegraphics[height=0.5\paperheight]{images/dhbwcalendar-google.jpg}
   \end{figure}
   \begin{itemize}
-    \item Unterstützt Abfragen externe iCalendar Ressourcen.
+    \item Unterstützt Abfragen externer iCalendar Ressourcen.
   \end{itemize}
 \end{frame}
 
@@ -137,10 +173,12 @@
 \begin{frame}\frametitle{Windows Live}
   \begin{figure}
     \centering
-    \includegraphics[height=0.6\paperheight]{images/dhbwcalendar-live-web.jpg}
+    \includegraphics[height=0.6\paperheight]{images/dhbwcalendar-live-web.png}
   \end{figure}
   \begin{itemize}
-    \item Unterstützt Abfragen externer iCalendar Ressourcen.
+    \item Unterstützt kein SSL
+    \item Unterstützt keine HTTP-Authentifizierung
+    \item Workaround: Credentials in Query-String der URL
   \end{itemize}
 \end{frame}
 
@@ -155,12 +193,19 @@
 \end{frame}
 
 \begin{frame}\frametitle{Windows Mobile}
-  \begin{figure}
-    \centering
-  \end{figure}
-  \begin{itemize}
-    \item Über Synchronisation mit Windows Live.
-  \end{itemize}
+  \visible<1->{
+    \begin{itemize}
+    \item Theoretisch über Synchronisation mit Windows Live.
+    \item Aber nur für den primären Kalender
+    \item siehe \url{http://support.microsoft.com/kb/2430181/de}
+    \end{itemize}
+  }
+  \vspace{1cm}
+  \visible<2->{
+    \begin{center}
+      {\huge \tt \#fail}
+    \end{center}
+  }
 \end{frame}
 
 \begin{frame}\frametitle{Mozilla Thunderbird+Lightning}
@@ -173,15 +218,35 @@
   \end{itemize}
 \end{frame}
 
-\section{Implementierung}
-\begin{frame}
-\begin{itemize}
-\item architektur... usw
-\item maven,java,foo
-\item @github
-\end{itemize}
+
+\section{Projekt}
+
+\begin{frame}\frametitle{Open-Source Projekt}
+  \begin{itemize}
+  \item Java Projekt mit Apache-maven als Werkzeug
+  \item Github Hosting für
+    \begin{itemize}
+    \item Code
+    \item Issues
+    \item Projektwebsite \url{http://dhbw-horb.github.com/dhbw-calendar}
+    \end{itemize}
+  \item Projektwebsite mit maven generiert:
+    \begin{itemize}
+      \item Java-Docs
+      \item Dependencies Report
+      \item Benutzeranleitung
+      \item Dokumentation
+    \end{itemize}
+  \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+\begin{center}
+  \huge ------ \\
+  \url{http://dhbw-horb.github.com/dhbw-calendar}
+\end{center}
+\end{frame}
 
 %% \appendix
 %% %\section{Schrottfolien}

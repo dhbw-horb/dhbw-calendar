@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.07pt}
+\select@language {ngerman}
+\beamer@sectionintoc {1}{Dualis}{2}{0}{1}
+\beamer@sectionintoc {2}{Implementierung}{12}{0}{2}
+\beamer@sectionintoc {3}{Screenshots}{15}{0}{3}
+\beamer@sectionintoc {4}{Projekt}{24}{0}{4}
