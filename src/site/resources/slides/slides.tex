@@ -173,7 +173,7 @@
 \begin{frame}\frametitle{Windows Live}
   \begin{figure}
     \centering
-    \includegraphics[height=0.6\paperheight]{images/dhbwcalendar-live-web.jpg}
+    \includegraphics[height=0.6\paperheight]{images/dhbwcalendar-live-web.png}
   \end{figure}
   \begin{itemize}
     \item Unterstützt kein SSL
@@ -193,12 +193,19 @@
 \end{frame}
 
 \begin{frame}\frametitle{Windows Mobile}
-  \begin{figure}
-    \centering
-  \end{figure}
-  \begin{itemize}
-    \item Über Synchronisation mit Windows Live.
-  \end{itemize}
+  \visible<1->{
+    \begin{itemize}
+    \item Theoretisch über Synchronisation mit Windows Live.
+    \item Aber nur für den primären Kalender
+    \item siehe \url{http://support.microsoft.com/kb/2430181/de}
+    \end{itemize}
+  }
+  \vspace{1cm}
+  \visible<2->{
+    \begin{center}
+      {\huge \tt \#fail}
+    \end{center}
+  }
 \end{frame}
 
 \begin{frame}\frametitle{Mozilla Thunderbird+Lightning}
