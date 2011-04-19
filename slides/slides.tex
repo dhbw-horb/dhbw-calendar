@@ -93,36 +93,9 @@
 \end{frame}
 
 \section{Implementierung}
-\begin{frame}\frametitle{Mögliche Schnittstellen}
-  \begin{itemize}
-  \item Apple iPhone
-    \begin{itemize}
-    \item Direkte iCalendar/HTTPS Unterstützung.
-    \end{itemize}
-  \item Google Kalender
-    \begin{itemize}
-    \item schliesst Android Smartphone ein.
-    \item Unterstützt Abfragen externer iCalendar/HTTPS Ressourcen.
-    \end{itemize}
-  \item Mozilla Thunderbird/Lightning
-    \begin{itemize}
-    \item Direkte iCalendar/HTTPS Unterstützung.
-    \end{itemize}
-  \item Microsoft Outlook
-    \begin{itemize}
-    \item Direkte iCalendar/HTTPS Unterstützung.
-    \end{itemize}
-  \item Microsoft Windows Live
-    \begin{itemize}
-    \item schliesst Windows Mail, Windows Mobile ein.
-    \item beschränkt Abfragen von iCalendar/HTTP Resourcen.
-    \end{itemize}
-    \pause
-  \item \textsc{DUALIS}
-    \begin{itemize}
-    \item soweit keine zugänglichen Schnittstellen bekannt.
-    \end{itemize}
-  \end{itemize}
+\begin{frame}%\frametitle{Mögliche Schnittstellen}
+  \includegraphics[width=0.85\paperwidth]{images/schnittstellen.png}\\
+  \textsc{\bf DUALIS}: keine zugänglichen Schnittstellen bekannt.
 \end{frame}
 
 \begin{frame}\frametitle{Architektur}
@@ -201,11 +174,13 @@
     \end{itemize}
   }
   \vspace{1cm}
-  \visible<2->{
+%  \visible<2->{
     \begin{center}
-      {\huge \tt \#fail}
+      \includegraphics[height=4cm]{images/dhbwcalendar-windows-phone.jpg}
+      \hspace{1cm}
+      \includegraphics[height=3cm]{images/ballmer.jpg}
     \end{center}
-  }
+%  }
 \end{frame}
 
 \begin{frame}\frametitle{Mozilla Thunderbird+Lightning}
@@ -240,6 +215,9 @@
   \end{itemize}
 \end{frame}
 
+
+%maven site
+% - apt
 
 \begin{frame}
 \begin{center}

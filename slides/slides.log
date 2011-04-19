@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.3.28)  12 APR 2011 15:33
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.3.28)  13 APR 2011 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1148,6 +1148,13 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 [11
 
  <./images/overview-slide.png>]
+<images/schnittstellen.png, id=150, 845.19765pt x 597.6729pt>
+File: images/schnittstellen.png Graphic file (type png)
+
+<use images/schnittstellen.png>
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 99.
+
 Overfull \hbox (4.91193pt too wide) has occurred while \output is active
 [][] []
  []
@@ -1159,19 +1166,8 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 
 [12
 
-]
-Overfull \hbox (4.91193pt too wide) has occurred while \output is active
-[][] []
- []
-
-
-Overfull \hbox (1.66794pt too wide) has occurred while \output is active
-[]
- []
-
-[13
-
-] <images/arch.png, id=168, 845.34pt x 597.87pt>
+ <./images/schnittstellen.png>]
+<images/arch.png, id=160, 845.34pt x 597.87pt>
 File: images/arch.png Graphic file (type png)
  <use images/arch.png>
 Overfull \hbox (4.91193pt too wide) has occurred while \output is active
@@ -1183,10 +1179,10 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[14
+[13
 
  <./images/arch.png>]
-<images/dhbwcalendar-iphone.jpg, id=179, 642.4pt x 481.8pt>
+<images/dhbwcalendar-iphone.jpg, id=172, 642.4pt x 481.8pt>
 File: images/dhbwcalendar-iphone.jpg Graphic file (type jpg)
 
 <use images/dhbwcalendar-iphone.jpg>
@@ -1199,10 +1195,10 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[15
+[14
 
  <./images/dhbwcalendar-iphone.jpg>]
-<images/dhbwcalendar-google.jpg, id=188, 1071.00125pt x 542.025pt>
+<images/dhbwcalendar-google.jpg, id=182, 1071.00125pt x 542.025pt>
 File: images/dhbwcalendar-google.jpg Graphic file (type jpg)
 
 <use images/dhbwcalendar-google.jpg>
@@ -1215,10 +1211,10 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[16
+[15
 
  <./images/dhbwcalendar-google.jpg>]
-<images/dhbwcalendar-android.png, id=198, 728.7225pt x 321.2pt>
+<images/dhbwcalendar-android.png, id=191, 728.7225pt x 321.2pt>
 File: images/dhbwcalendar-android.png Graphic file (type png)
 
 <use images/dhbwcalendar-android.png>
@@ -1231,10 +1227,10 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[17
+[16
 
  <./images/dhbwcalendar-android.png>]
-<images/dhbwcalendar-outlook2007.jpg, id=209, 591.37065pt x 508.99838pt>
+<images/dhbwcalendar-outlook2007.jpg, id=202, 591.37065pt x 508.99838pt>
 File: images/dhbwcalendar-outlook2007.jpg Graphic file (type jpg)
 
 <use images/dhbwcalendar-outlook2007.jpg>
@@ -1247,14 +1243,14 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[18
+[17
 
  <./images/dhbwcalendar-outlook2007.jpg>]
-<images/dhbwcalendar-live-web.png, id=219, 810.02625pt x 478.03593pt>
+<images/dhbwcalendar-live-web.png, id=212, 810.02625pt x 478.03593pt>
 File: images/dhbwcalendar-live-web.png Graphic file (type png)
 
 <use images/dhbwcalendar-live-web.png>
-Overfull \vbox (6.20728pt too high) detected at line 183
+Overfull \vbox (6.20728pt too high) detected at line 156
  []
 
 
@@ -1267,10 +1263,10 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[19
+[18
 
  <./images/dhbwcalendar-live-web.png>]
-<images/dhbwcalendar-live-desktop.jpg, id=231, 774.895pt x 449.68pt>
+<images/dhbwcalendar-live-desktop.jpg, id=223, 774.895pt x 449.68pt>
 File: images/dhbwcalendar-live-desktop.jpg Graphic file (type jpg)
 
 <use images/dhbwcalendar-live-desktop.jpg>
@@ -1283,9 +1279,16 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[20
+[19
 
  <./images/dhbwcalendar-live-desktop.jpg>]
+<images/dhbwcalendar-windows-phone.jpg, id=235, 132.495pt x 212.4738pt>
+File: images/dhbwcalendar-windows-phone.jpg Graphic file (type jpg)
+
+<use images/dhbwcalendar-windows-phone.jpg>
+<images/ballmer.jpg, id=236, 461.725pt x 277.035pt>
+File: images/ballmer.jpg Graphic file (type jpg)
+ <use images/ballmer.jpg>
 Overfull \hbox (4.91193pt too wide) has occurred while \output is active
 [][] []
  []
@@ -1295,21 +1298,10 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[21
+[20
 
-]
-Overfull \hbox (4.91193pt too wide) has occurred while \output is active
-[][] []
- []
-
-
-Overfull \hbox (1.66794pt too wide) has occurred while \output is active
-[]
- []
-
-[22
-
-] <images/dhbwcalendar-lightning.jpg, id=262, 729.72626pt x 632.3625pt>
+ <./images/dhbwcalendar-windows-phone.jpg> <./images/ballmer.jpg>]
+<images/dhbwcalendar-lightning.jpg, id=246, 729.72626pt x 632.3625pt>
 File: images/dhbwcalendar-lightning.jpg Graphic file (type jpg)
 
 <use images/dhbwcalendar-lightning.jpg>
@@ -1322,7 +1314,7 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[23
+[21
 
  <./images/dhbwcalendar-lightning.jpg>]
 Overfull \hbox (4.91193pt too wide) has occurred while \output is active
@@ -1334,15 +1326,15 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[24
+[22
 
 ]
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <20.74> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 249.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 227.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <14.4> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 249.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 227.
 LaTeX Font Info:    Font shape `OT1/phv/m/it' in size <12> not available
-(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 249.
+(Font)              Font shape `OT1/phv/m/sl' tried instead on input line 227.
 
 Overfull \hbox (4.91193pt too wide) has occurred while \output is active
 [][] []
@@ -1353,7 +1345,7 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 []
  []
 
-[25
+[23
 
 ]
 \tf@nav=\write5
@@ -1367,11 +1359,11 @@ Overfull \hbox (1.66794pt too wide) has occurred while \output is active
 
  (./slides.aux) ) 
 Here is how much of TeX's memory you used:
- 17106 strings out of 495021
- 295837 string characters out of 1181035
- 415457 words of memory out of 3000000
- 19714 multiletter control sequences out of 15000+50000
- 48053 words of font info for 127 fonts, out of 3000000 for 9000
+ 17115 strings out of 495021
+ 296238 string characters out of 1181035
+ 413457 words of memory out of 3000000
+ 19728 multiletter control sequences out of 15000+50000
+ 48406 words of font info for 126 fonts, out of 3000000 for 9000
  28 hyphenation exceptions out of 8191
  45i,16n,54p,341b,692s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/sh
@@ -1380,9 +1372,9 @@ exlive/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/font
 s/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf-texlive/fonts/type1/urw
 /helvetic/uhvb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvr8a.
 pfb></usr/share/texmf-texlive/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on slides.pdf (25 pages, 1086365 bytes).
+Output written on slides.pdf (23 pages, 1501357 bytes).
 PDF statistics:
- 328 PDF objects out of 1000 (max. 8388607)
- 54 named destinations out of 1000 (max. 500000)
- 41105 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 312 PDF objects out of 1000 (max. 8388607)
+ 50 named destinations out of 1000 (max. 500000)
+ 39584 words of extra memory for PDF output out of 42996 (max. 10000000)
 
